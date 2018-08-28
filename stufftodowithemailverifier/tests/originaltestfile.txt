@@ -1,0 +1,465 @@
+test@example.com
+anothergoodone@email.com.au
+]another@test.com
+goodone@abetterone.com
+test@example.com
+anothergoodone@email.com.au
+]another@test.com
+goodone@abetterone.com
+fortnitesucks"@lol.com
+simple@example.com
+very.common@example.com
+disposable.style.email.with+symbol@example.com
+other.email-with-hyphen@example.com
+fully-qualified-domain@example.com
+user.name+tag+sorting@example.com
+x@example.com
+"very.(),:;<>[]\".VERY.\"very@\\ \"very\".unusual"@strange.example.com
+example-indeed@strange-example.com
+admin@mailserver1
+#!$%&'*+-/=?^_`{}|~@example.org
+"()<>[]:,;@\\\"!#$%&'-/=?^_`{}| ~.a"@example.org
+example@s.example
+user@localserver
+user@[2001:DB8::1]
+Abc.example.com
+A@b@c@example.com
+a"b(c)d,e:f;g<h>i[j\k]l@example.com
+just"not"right@example.com
+this is"not\allowed@example.com
+this\ still\"not\\allowed@example.com
+1234567890123456789012345678901234567890123456789012345678901234+x@example.com
+john..doe@example.com
+john.doe@example..com
+" "@example.org
+email@example.com
+firstname.lastname@example.com
+email@subdomain.example.com
+firstname+lastname@example.com
+email@123.123.123.123
+email@[123.123.123.123]
+“email”@example.com
+1234567890@example.com
+email@example-one.com
+_______@example.com
+email@example.name
+email@example.museum
+email@example.co.jp
+firstname-lastname@example.com
+much.“more\ unusual”@example.com
+very.unusual.“@”.unusual.com@example.com
+very.“(),:;<>[]”.VERY.“very@\\ "very”.unusual@strange.example.com
+plainaddress
+#@%^%#$@#$@#.com
+@example.com
+Joe Smith <email@example.com>
+email.example.com
+email@example@example.com
+.email@example.com
+email.@example.com
+email..email@example.com
+あいうえお@example.com
+email@example.com (Joe Smith)
+email@example
+email@-example.com
+email@example.web
+email@111.222.333.44444
+email@example..com
+Abc..123@example.com
+“(),:;<>[\]@example.com
+just"not"right@example.com
+this\ is"really"not\allowed@example.com
+test@help.net
+123.surprises@live.hehe
+shaikhsamit@live.com
+shaikhsamit@rocketmail.com
+shaikhsamit@icloud.com
+shaikhsamit42@gmail.com
+sanjida.kazi@yahoo.com.sg
+samit.ahmedshaikh@student.education.edu.au
+0q324987321""@adfs.com
+asdf"""<>@>>"ads".net
+test@123sdll.com
+12321@asdfasd-asdf-adsf.com
+asdfasdf@adfasdf--adfsasdf.com
+asdfasdf@-afdsasdf.com
+adfasdfasd@asdfasdfasd-.com
+ek..se@adfadsf.com
+foo
+#@%^%#$@#$@#.com
+@baz.com
+Jane Doe <foo@baz.com>
+qux.baz.com
+foo@bar@baz.com
+.foo@baz.com
+foo.@baz.com
+foo..bar@baz.com
+あいうえお@baz.com
+foo@baz.com (Jane Doe)
+foo@baz
+foo@-baz.com
+foo@baz.qux
+foo@123.456.789.12345
+foo@baz..com
+foo..123456@baz.com
+a"b(c)d,e:f;g<h>I[j\k]l@baz.com
+foofoofoofoofoofoofoofoofoofoofoofoofoofoofoofoofoofoofoofoofoofoofoofoofoofoo@baz.com
+foo bar@baz.com
+foo@baz.com-
+foo@baz,qux.com
+foo\@bar@baz.com
+foo.bar
+@
+@@
+.@
+foo@baz.com
+foo.bar@baz.com
+foo@bar.baz.com
+foo+bar@baz.com
+foo@123.456.789.123
+foo@[123.456.789.123]
+"foo"@baz.com
+123456789@baz.com
+foo@baz-quz.com
+_@baz.com
+________@baz.com
+foo@baz.name
+foo@baz.co.uk
+foo-bar@baz.com
+foo."bar\ qux"@baz.com
+foo.bar."bux".bar.com@baz.com
+baz.com@baz.com
+foo.bar+qux@baz.com
+foo.bar-qux@baz.com
+foo.bar@baz.com.
+f@baz.com
+"foo.(),:;<>[]\".FOO.\"foo@\\ \"FOO\".foo"@baz.qux.com
+" "@baz.com
+_foo@baz.com
+foo/bar=qux@baz.com
+foo."bar"@baz.com
+foo@bar--baz.com
+foob*ar@baz.com
+"foo@bar"@baz.com
+email@domain.com
+firstname.lastname@domain.com
+email@subdomain.domain.com
+firstname+lastname@domain.com
+email@123.123.123.123
+email@[123.123.123.123]
+"email"@domain.com
+1234567890@domain.com
+email@domain-one.com
+_______@domain.com
+email@domain.name
+email@domain.co.jp
+firstname-lastname@domain.com
+plainaddress
+#@%^%#$@#$@#.com
+@domain.com
+Joe Smith <email@domain.com>
+email.domain.com
+email@domain@domain.com
+.email@domain.com
+email.@domain.com
+email..email@domain.com
+あいうえお@domain.com
+email@domain.com (Joe Smith)
+email@domain
+email@-domain.com
+email@domain.web
+email@111.222.333.44444
+email@domain..com
+a"b(c)d,e:f;gi[j\k]l@example.com
+simpleEmail@email.com
+simple.email@email.com
+plus+symbol@email.com
+dash-symbol@email.com
+q@email.com
+“unusual”@email.com
+dash-symbol@email-dash.com
+test@emailServer
+” “@email.com
+user@[IPv6:2001:DB8::1]
+example@localhost
+example@s.solutions
+12345@email.com
+invalid.email.com
+invalid@test@email.com
+i”n(v)a;l:id@email.com
+invalid”test”@email.com
+this is”not\allowed@email.com
+invalid…test@email.com
+invalid@email…com
+email@111.222.333.44444
+invalid@-email.com
+.invalid@email.com
+invalid.@email.com
+invalid@email.com (tester)
+@email.com
+first.last@iana.org	valid
+1234567890123456789012345678901234567890123456789012345678901234@iana.org	valid
+"first\"last"@iana.org	valid
+"first@last"@iana.org	valid
+"first\last"@iana.org	valid
+x@x23456789.x23456789.x23456789.x23456789.x23456789.x23456789.x23456789.x23456789.x23456789.x23456789.x23 [...]	valid
+1234567890123456789012345678901234567890123456789012345678@1234567890123456789012345678901234567890123456 [...]	valid
+first.last@[12.34.56.78]	valid
+first.last@[IPv6:::12.34.56.78]	valid
+first.last@[IPv6:1111:2222:3333::4444:12.34.56.78]	valid
+first.last@[IPv6:1111:2222:3333:4444:5555:6666:12.34.56.78]	valid
+first.last@[IPv6:::1111:2222:3333:4444:5555:6666]	valid
+first.last@[IPv6:1111:2222:3333::4444:5555:6666]	valid
+first.last@[IPv6:1111:2222:3333:4444:5555:6666::]	valid
+first.last@[IPv6:1111:2222:3333:4444:5555:6666:7777:8888]	valid
+first.last@x23456789012345678901234567890123456789012345678901234567890123.iana.org	valid
+first.last@3com.com	valid
+first.last@123.iana.org	valid
+"first\last"@iana.org	valid
+first.last@[IPv6:1111:2222:3333::4444:5555:12.34.56.78]	invalid
+first.last@[IPv6:1111:2222:3333::4444:5555:6666:7777]	invalid
+first.last@example.123	invalid
+first.last@com	invalid
+"Abc\@def"@iana.org	valid
+"Fred\ Bloggs"@iana.org	valid
+"Joe.\Blow"@iana.org	valid
+"Abc@def"@iana.org	valid
+"Fred Bloggs"@iana.org	invalid
+user+mailbox@iana.org	valid
+customer/department=shipping@iana.org	valid
+$A12345@iana.org	valid
+!def!xyz%abc@iana.org	valid
+_somename@iana.org	valid
+dclo@us.ibm.com	valid
+peter.piper@iana.org	valid
+"Doug \"Ace\" L."@iana.org	invalid
+test@iana.org	valid
+TEST@iana.org	valid
+1234567890@iana.org	valid
+test+test@iana.org	valid
+test-test@iana.org	valid
+t*est@iana.org	valid
++1~1+@iana.org	valid
+{_test_}@iana.org	valid
+"[[ test ]]"@iana.org	invalid
+test.test@iana.org	valid
+"test.test"@iana.org	valid
+test."test"@iana.org	valid
+"test@test"@iana.org	valid
+test@123.123.123.x123	valid
+test@123.123.123.123	invalid
+test@[123.123.123.123]	valid
+test@example.iana.org	valid
+test@example.example.iana.org	valid
+"test\test"@iana.org	valid
+test@example	invalid
+"test\blah"@iana.org	valid
+"test\blah"@iana.org	valid
+"test\"blah"@iana.org	valid
+customer/department@iana.org	valid
+_Yosemite.Sam@iana.org	valid
+~@iana.org	valid
+"Austin@Powers"@iana.org	valid
+Ima.Fool@iana.org	valid
+"Ima.Fool"@iana.org	valid
+"Ima Fool"@iana.org	invalid
+"first"."last"@iana.org	valid
+"first".middle."last"@iana.org	valid
+"first".last@iana.org	valid
+first."last"@iana.org	valid
+"first"."middle"."last"@iana.org	valid
+"first.middle"."last"@iana.org	valid
+"first.middle.last"@iana.org	valid
+"first..last"@iana.org	valid
+"first\\\"last"@iana.org	valid
+first."mid\dle"."last"@iana.org	valid
+"test blah"@iana.org	invalid
+(foo)cal(bar)@(baz)iamcal.com(quux)	invalid
+cal@iamcal(woo).(yay)com	invalid
+cal(woo(yay)hoopla)@iamcal.com	invalid
+cal(foo\@bar)@iamcal.com	invalid
+cal(foo\)bar)@iamcal.com	invalid
+first().last@iana.org	invalid
+pete(his account)@silly.test(his host)	invalid
+c@(Chris's host.)public.example	invalid
+jdoe@machine(comment). example	invalid
+1234 @ local(blah) .machine .example	invalid
+first(abc.def).last@iana.org	invalid
+first(a"bc.def).last@iana.org	invalid
+first.(")middle.last(")@iana.org	invalid
+first(abc\(def)@iana.org	invalid
+first.last@x(1234567890123456789012345678901234567890123456789012345678901234567890).com	invalid
+a(a(b(c)d(e(f))g)h(i)j)@iana.org	invalid
+name.lastname@domain.com	valid
+a@b	invalid
+a@bar.com	valid
+aaa@[123.123.123.123]	valid
+a@bar	invalid
+a-b@bar.com	valid
++@b.c	valid
++@b.com	valid
+a@b.co-foo.uk	valid
+"hello my name is"@stutter.com	invalid
+"Test \"Fail\" Ing"@iana.org	invalid
+valid@about.museum	valid
+shaitan@my-domain.thisisminekthx	valid
+foobar@192.168.0.1	invalid
+"Joe\Blow"@iana.org	valid
+HM2Kinsists@(that comments are allowed)this.is.ok	invalid
+user%uucp!path@berkeley.edu	valid
+first.last @iana.org	invalid
+cdburgess+!#$%&'*-/=?+_{}|~test@gmail.com	valid
+first.last@[IPv6:::a2:a3:a4:b1:b2:b3:b4]	invalid
+first.last@[IPv6:a1:a2:a3:a4:b1:b2:b3::]	invalid
+first.last@[IPv6:::]	valid
+first.last@[IPv6:::b4]	valid
+first.last@[IPv6:::b3:b4]	valid
+first.last@[IPv6:a1::b4]	valid
+first.last@[IPv6:a1::]	valid
+first.last@[IPv6:a1:a2::]	valid
+first.last@[IPv6:0123:4567:89ab:cdef::]	valid
+first.last@[IPv6:0123:4567:89ab:CDEF::]	valid
+first.last@[IPv6:::a3:a4:b1:ffff:11.22.33.44]	valid
+first.last@[IPv6:::a2:a3:a4:b1:ffff:11.22.33.44]	invalid
+first.last@[IPv6:a1:a2:a3:a4::11.22.33.44]	valid
+first.last@[IPv6:a1:a2:a3:a4:b1::11.22.33.44]	invalid
+first.last@[IPv6:a1::11.22.33.44]	valid
+first.last@[IPv6:a1:a2::11.22.33.44]	valid
+first.last@[IPv6:0123:4567:89ab:cdef::11.22.33.44]	valid
+first.last@[IPv6:0123:4567:89ab:CDEF::11.22.33.44]	valid
+first.last@[IPv6:a1::b2:11.22.33.44]	valid
+test@test.com	valid
+test@xn--example.com	valid
+test@example.com	valid
+first.last@sub.do,com	invalid
+first\@last@iana.org	invalid
+123456789012345678901234567890123456789012345678901234567890@12345678901234567890123456789012345678901234 [...]	invalid
+first.last	invalid
+12345678901234567890123456789012345678901234567890123456789012345@iana.org	invalid
+.first.last@iana.org	invalid
+first.last.@iana.org	invalid
+first..last@iana.org	invalid
+"first"last"@iana.org	invalid
+"""@iana.org	invalid
+"\"@iana.org	invalid
+""@iana.org	valid
+first\@last@iana.org	invalid
+first.last@	invalid
+x@x23456789.x23456789.x23456789.x23456789.x23456789.x23456789.x23456789.x23456789.x23456789.x23456789.x23 [...]	invalid
+first.last@[.12.34.56.78]	invalid
+first.last@[12.34.56.789]	invalid
+first.last@[::12.34.56.78]	invalid
+first.last@[IPv5:::12.34.56.78]	invalid
+first.last@[IPv6:1111:2222:3333:4444:5555:12.34.56.78]	invalid
+first.last@[IPv6:1111:2222:3333:4444:5555:6666:7777:12.34.56.78]	invalid
+first.last@[IPv6:1111:2222:3333:4444:5555:6666:7777]	invalid
+first.last@[IPv6:1111:2222:3333:4444:5555:6666:7777:8888:9999]	invalid
+first.last@[IPv6:1111:2222::3333::4444:5555:6666]	invalid
+first.last@[IPv6:1111:2222:333x::4444:5555]	invalid
+first.last@[IPv6:1111:2222:33333::4444:5555]	invalid
+first.last@-xample.com	invalid
+first.last@exampl-.com	invalid
+first.last@x234567890123456789012345678901234567890123456789012345678901234.iana.org	invalid
+abc\@def@iana.org	invalid
+abc\@iana.org	invalid
+Doug\ \"Ace\"\ Lovell@iana.org	invalid
+abc@def@iana.org	invalid
+abc\@def@iana.org	invalid
+abc\@iana.org	invalid
+@iana.org	invalid
+doug@	invalid
+"qu@iana.org	invalid
+ote"@iana.org	invalid
+.dot@iana.org	invalid
+dot.@iana.org	invalid
+two..dot@iana.org	invalid
+"Doug "Ace" L."@iana.org	invalid
+Doug\ \"Ace\"\ L\.@iana.org	invalid
+hello world@iana.org	invalid
+gatsby@f.sc.ot.t.f.i.tzg.era.l.d.	invalid
+test.iana.org	invalid
+test.@iana.org	invalid
+test..test@iana.org	invalid
+.test@iana.org	invalid
+test@test@iana.org	invalid
+test@@iana.org	invalid
+-- test --@iana.org	invalid
+[test]@iana.org	invalid
+"test"test"@iana.org	invalid
+()[]\;:,><@iana.org	invalid
+test@.	invalid
+test@example.	invalid
+test@.org	invalid
+test@1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890 [...]	invalid
+test@[123.123.123.123	invalid
+test@123.123.123.123]	invalid
+NotAnEmail	invalid
+@NotAnEmail	invalid
+"test"blah"@iana.org	invalid
+.wooly@iana.org	invalid
+wo..oly@iana.org	invalid
+pootietang.@iana.org	invalid
+.@iana.org	invalid
+Ima Fool@iana.org	invalid
+phil.h\@\@ck@haacked.com	invalid
+foo@[\1.2.3.4]	invalid
+first."".last@iana.org	valid
+first\last@iana.org	invalid
+Abc\@def@iana.org	invalid
+Fred\ Bloggs@iana.org	invalid
+Joe.\Blow@iana.org	invalid
+first.last@[IPv6:1111:2222:3333:4444:5555:6666:12.34.567.89]	invalid
+{^c\@**Dog^}@cartoon.com	invalid
+"foo"(yay)@(hoopla)[1.2.3.4]	invalid
+cal(foo(bar)@iamcal.com	invalid
+cal(foo)bar)@iamcal.com	invalid
+cal(foo\)@iamcal.com	invalid
+first(12345678901234567890123456789012345678901234567890)last@(123456789012345678901234567890123456789012 [...]	invalid
+first(middle)last@iana.org	invalid
+first(abc("def".ghi).mno)middle(abc("def".ghi).mno).last@(abc("def".ghi).mno)example(abc("def".ghi).mno). [...]	invalid
+a(a(b(c)d(e(f))g)(h(i)j)@iana.org	invalid
+.@	invalid
+@bar.com	invalid
+@@bar.com	invalid
+aaa.com	invalid
+aaa@.com	invalid
+aaa@.123	invalid
+aaa@[123.123.123.123]a	invalid
+aaa@[123.123.123.333]	invalid
+a@bar.com.	invalid
+a@-b.com	invalid
+a@b-.com	invalid
+-@..com	invalid
+-@a..com	invalid
+invalid@about.museum-	invalid
+test@...........com	invalid
+"Unicode NULL "@char.com	invalid
+Unicode NULL @char.com	invalid
+first.last@[IPv6::]	invalid
+first.last@[IPv6::::]	invalid
+first.last@[IPv6::b4]	invalid
+first.last@[IPv6::::b4]	invalid
+first.last@[IPv6::b3:b4]	invalid
+first.last@[IPv6::::b3:b4]	invalid
+first.last@[IPv6:a1:::b4]	invalid
+first.last@[IPv6:a1:]	invalid
+first.last@[IPv6:a1:::]	invalid
+first.last@[IPv6:a1:a2:]	invalid
+first.last@[IPv6:a1:a2:::]	invalid
+first.last@[IPv6::11.22.33.44]	invalid
+first.last@[IPv6::::11.22.33.44]	invalid
+first.last@[IPv6:a1:11.22.33.44]	invalid
+first.last@[IPv6:a1:::11.22.33.44]	invalid
+first.last@[IPv6:a1:a2:::11.22.33.44]	invalid
+first.last@[IPv6:0123:4567:89ab:cdef::11.22.33.xx]	invalid
+first.last@[IPv6:0123:4567:89ab:CDEFF::11.22.33.44]	invalid
+first.last@[IPv6:a1::a4:b1::b4:11.22.33.44]	invalid
+first.last@[IPv6:a1::11.22.33]	invalid
+first.last@[IPv6:a1::11.22.33.44.55]	invalid
+first.last@[IPv6:a1::b211.22.33.44]	invalid
+first.last@[IPv6:a1::b2::11.22.33.44]	invalid
+first.last@[IPv6:a1::b3:]	invalid
+first.last@[IPv6::a2::b4]	invalid
+first.last@[IPv6:a1:a2:a3:a4:b1:b2:b3:]	invalid
+first.last@[IPv6::a2:a3:a4:b1:b2:b3:b4]	invalid
+first.last@[IPv6:a1:a2:a3:a4::b1:b2:b3:b4]	invalid

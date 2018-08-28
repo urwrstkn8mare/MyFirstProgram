@@ -1,0 +1,64 @@
+first.last@iana.org
+1234567890123456789012345678901234567890123456789012345678901234@iana.org
+first.last@x23456789012345678901234567890123456789012345678901234567890123.iana.org
+first.last@3com.com
+first.last@123.iana.org
+first.last@example.123
+first.last@com
+user+mailbox@iana.org
+customer/department=shipping@iana.org
+$A12345@iana.org
+!def!xyz%abc@iana.org
+_somename@iana.org
+dclo@us.ibm.com
+peter.piper@iana.org
+test@iana.org
+TEST@iana.org
+1234567890@iana.org
+test+test@iana.org
+test-test@iana.org
+t*est@iana.org
++1~1+@iana.org
+{_test_}@iana.org
+test.test@iana.org
+test@123.123.123.x123
+test@123.123.123.123
+test@example.iana.org
+test@example.example.iana.org
+test@example
+customer/department@iana.org
+_Yosemite.Sam@iana.org
+~@iana.org
+Ima.Fool@iana.org
+(foo)cal(bar)@(baz)iamcal.com(quux)
+cal@iamcal(woo).(yay)com
+cal(woo(yay)hoopla)@iamcal.com
+cal(foo\@bar)@iamcal.com
+cal(foo\)bar)@iamcal.com
+first().last@iana.org
+pete(his account)@silly.test(his host)
+c@(Chris's host.)public.example
+jdoe@machine(comment). example
+1234 @ local(blah) .machine .example
+first(abc.def).last@iana.org
+first(abc\(def)@iana.org
+first.last@x(1234567890123456789012345678901234567890123456789012345678901234567890).com
+a(a(b(c)d(e(f))g)h(i)j)@iana.org
+name.lastname@domain.com
+a@b
+a@bar.com
+a@bar
+a-b@bar.com
++@b.c
++@b.com
+a@b.co-foo.uk
+@about.museum
+shaitan@my-domain.thisisminekthx
+foobar@192.168.0.1
+HM2Kinsists@(that comments are allowed)this.is.ok
+user%uucp!path@berkeley.edu
+first.last @iana.org
+cdburgess+!#$%&'*-/=?+_{}|~test@gmail.com
+test@test.com
+test@xn--example.com
+test@example.com
