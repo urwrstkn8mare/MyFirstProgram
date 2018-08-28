@@ -1,6 +1,0 @@
-GNAME,SNAME,ROLE,TRATE,SUPER,HLTH,MON,TUE,WED,THU,FRI,SAT,SUN
-Harry,Grapes,Barista,30,6,25,9,9,9,0,9,6,10
-Marg,Plum,Manager,40,8,45,11,8,9,9,0,5,5
-Monica,Nguyen,Barista,0,4,15,12,9,0,9,6,9
-Jack,Flash,Administrator,50,9,10,-1,0,5,0,0,0,0,0,0,0
-Jane,Doe,Manager,30,3,10,50,25,0,0,0,1,3
