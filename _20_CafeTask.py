@@ -30,8 +30,9 @@ def create(gn, sn, storage):
     def nv(string):
         return str(input(string))
 
-    data = Read_csv(storage, True)
-    if data[0].startswith('!ERROR') or not ', '.join(data[0]) == 'GNAME, SNAME, ROLE, TRATE, SUPER, HLTH, MON, TUE, WED, THU, FRI, SAT, SUN, LASTCHECKIN, LASTCHECKOUT':
+    data = read_csv(storage, True)
+    if data[0].startswith('!ERROR') or not ', '.join(data[0]) == 'GNAME, SNAME, ROLE, TRATE, SUPER, HLTH, MON, TUE, ' \
+                                                                 'WED, THU, FRI, SAT, SUN, LASTCHECKIN, LASTCHECKOUT':
         write_csv_record(storage, [
             ['GNAME', 'SNAME', 'ROLE', 'TRATE', 'SUPER', 'HLTH', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN',
              'LASTCHECKIN', 'LASTCHECKOUT']])
@@ -41,17 +42,17 @@ def create(gn, sn, storage):
     if role == 'barista' or role == 'manager':
         pass
     else:
-        error('!ERROR! Incorrect ROLE input.')
+        error('!ERROR!', 'Incorrect ROLE input.')
     trate = nv('TRATE (30/40)').strip()
     if trate == '30' or trate == '40':
         pass
     else:
-        error('!ERROR! Incorrect TRATE input.')
+        error('!ERROR!', 'Incorrect TRATE input.')
     trate = nv('TRATE (4/6/8)').strip()
-    if trate == '4' or trate == '6' or 8 :
+    if trate == '4' or trate == '6' or '8':
         pass
     else:
-        error('!ERROR! Incorrect TRATE input.')
+        error('!ERROR!', 'Incorrect TRATE input.')
     append_csv_record(storage, [gn, sn, role, trate, superr, hlth, mon, tue, wed, thu, fri, sat, sun, lastcheckin, lastcheckout])
 
 
@@ -67,6 +68,7 @@ def run():
         x = int(input('  -> '))
     except ValueError:
         error('!ERROR_1!', 'Incorrect Input')
+        x = 0
     gname = str(input('\nEmployee GNAME: '))
     sname = str(input('\nEmployee SNAME: '))
     if x == 1:

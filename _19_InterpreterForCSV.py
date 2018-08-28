@@ -24,7 +24,7 @@ def error(err, string):
     return err
 
 
-def Read_csv(filename, header):
+def read_csv(filename, header):
     while True:
         if filename.endswith('.csv'):
             global content
@@ -33,7 +33,9 @@ def Read_csv(filename, header):
                     content = fr.readlines()
                     content = [xx.strip() for xx in content]
             except FileNotFoundError:
-                return error('!ERROR_02!', 'The file you gave was not found or there was a problem with the program. (the file must be in the same directory as this program.)')
+                return error('!ERROR_02!',
+                             'The file you gave was not found or there was a problem with the program. (the file must '
+                             'be in the same directory as this program.)')
             for i in range(len(content)):
                 if content[i].find(',') == -1:
                     return error('!ERROR_03!', 'Not formatted correctly according to CSV format.')
@@ -45,7 +47,6 @@ def Read_csv(filename, header):
                 b = []
                 log('LOOP C')
                 for c in range(len(xx)):
-                    y = c
                     log('LOOP Y')
                     for y in range(len(xx)):
                         z = ','.join(xx[c:y + 1])
@@ -94,9 +95,9 @@ def Read_csv(filename, header):
         for g in range(len(pp[0])):
             if header:
                 keys.append(pp[0][g])
-            else: 
+            else:
                 keys.append(g + 1)
-        log('keys -> '+ str(keys))
+        log('keys -> ' + str(keys))
         log('header -> ' + str(header))
         if header:
             q = 1
@@ -113,11 +114,11 @@ def Read_csv(filename, header):
         return csvfile
 
 
-def find_csv_record(filename, key_value, *pos, **key):
+def find_csv_record(filename, key_value, **key):
     # there must be header and header must have a key field to use
-    csvfile = Read_csv(filename, True)
+    csvfile = read_csv(filename, True)
     log('csvfile -> ' + str(csvfile))
-    if ('key' in key):
+    if 'key' in key:
         keyy = key['key']
     else:
         keyy = 'key'
@@ -125,15 +126,17 @@ def find_csv_record(filename, key_value, *pos, **key):
         log(l)
         try:
             log('csvfile[l][keyy] -> ' + str(csvfile[l][keyy]))
-            log('key_value -> '+ str(key_value))
+            log('key_value -> ' + str(key_value))
             if csvfile[l][keyy] == key_value:
                 return csvfile[l]
         except IndexError:
-            error('!ERROR! CSV not formatted correctly to be used by this program.\nThere must be header and header must have a key field to use.')
+            error(
+                '!ERROR! CSV not formatted correctly to be used by this program.\nThere must be header and header '
+                'must have a key field to use.')
 
 
 def update_csv_record(filename, header, row, field, new_value):
-    csvfile = Read_csv(filename, header)
+    csvfile = read_csv(filename, header)
     log('csvfile -> ' + str(csvfile))
     try:
         csvfile[row][field] = new_value
@@ -159,15 +162,17 @@ def update_csv_record(filename, header, row, field, new_value):
     f.close()
 
 
-def append_csv_record(filename, list):
-    if type(list) == type([]):
-        csvfile = Read_csv(filename, False)
-        if len(list) == len(csvfile[0]):
+def append_csv_record(filename, listt):
+    if type(listt) == type([]):
+        csvfile = read_csv(filename, False)
+        if len(listt) == len(csvfile[0]):
             f = open(filename, 'a')
-            f.write(', '.join(list))
-            f.close
+            f.write(', '.join(listt))
+            f.close()
         else:
-            error('!ERROR! CSV file will not be formatted correctly with this new row. (The number of fields in input is not the same as file inputted)')
+            error(
+                '!ERROR! CSV file will not be formatted correctly with this new row. (The number of fields in input '
+                'is not the same as file inputted)')
     else:
         error('!ERROR! Parameter list is not a list. (it should be)')
 
@@ -184,7 +189,8 @@ def write_csv_record(filename, inside):
                 else:
                     error('!ERROR! Lines do not have same number of fields. (The file may be incomplete or corrupted.)')
             else:
-                error('!ERROR! Parameters other than filename should be lists. (The file may be incomplete or corrupted.)')
+                error(
+                    '!ERROR! Parameters other than filename should be lists. (The file may be incomplete or corrupted.)')
     except IndexError:
         f.close()
         error('!ERROR! Parameters were incorrectly inputted. (The file may be incomplete or corrupted.)')
@@ -192,21 +198,25 @@ def write_csv_record(filename, inside):
 
 
 def run():
-    test = Read_csv('test.csv', True)
+    testt = 'tests/'
+    test = read_csv(testt + 'test.csv', True)
     print('\n' + str(test))
-    print(test[0]['row'] + ', ' + test[0]['col1'] + ', ' + test[0]['col2'] + ', ' + test[0]['col3'] + ', ' + test[0]['yo'])
-    print(test[1]['row'] + ', ' + test[1]['col1'] + ', ' + test[1]['col2'] + ', ' + test[1]['col3'] + ', ' + test[1]['yo'])
-    print(test[2]['row'] + ', ' + test[2]['col1'] + ', ' + test[2]['col2'] + ', ' + test[2]['col3'] + ', ' + test[2]['yo'])
-    print(find_csv_record('test.csv', '002', key='yo'))
-    print(update_csv_record('test.csv', True, 1, 'col2', 'col2updated'))
-    print(Read_csv('test.csv', True))
-    print(append_csv_record('test.csv', ['1', '2', '3', '4', '5']))
-    print(Read_csv('test.csv', True))
-    print(write_csv_record('test2.csv', [['row', 'col1', 'col2'], ['row', 'col1', 'col2'], ['row', 'col1', 'col2']]))
-    print(Read_csv('test2.csv', False))
-    print(Read_csv('CSVTestData.csv', True))
-    print(Read_csv('CafeTestData.csv', True))
-
+    print(test[0]['row'] + ', ' + test[0]['col1'] + ', ' + test[0]['col2'] + ', ' + test[0]['col3'] + ', ' + test[0][
+        'yo'])
+    print(test[1]['row'] + ', ' + test[1]['col1'] + ', ' + test[1]['col2'] + ', ' + test[1]['col3'] + ', ' + test[1][
+        'yo'])
+    print(test[2]['row'] + ', ' + test[2]['col1'] + ', ' + test[2]['col2'] + ', ' + test[2]['col3'] + ', ' + test[2][
+        'yo'])
+    print(find_csv_record(testt + 'test.csv', '002', key='yo'))
+    print(update_csv_record(testt + 'test.csv', True, 1, 'col2', 'col2updated'))
+    print(read_csv(testt + 'test.csv', True))
+    print(append_csv_record(testt + 'test.csv', ['1', '2', '3', '4', '5']))
+    print(read_csv(testt + 'test.csv', True))
+    print(write_csv_record(testt + 'test2.csv',
+                           [['row', 'col1', 'col2'], ['row', 'col1', 'col2'], ['row', 'col1', 'col2']]))
+    print(read_csv(testt + 'test2.csv', False))
+    print(read_csv(testt + 'CSVTestData.csv', True))
+    print(read_csv(testt + 'CafeTestData.csv', True))
 
 
 if __name__ == '__main__':
