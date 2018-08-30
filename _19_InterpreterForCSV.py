@@ -20,7 +20,6 @@ def log(text):
 
 def error(err, string):
     print(err + ' ' + string)
-    input('Enter to continue...')
     return err
 
 

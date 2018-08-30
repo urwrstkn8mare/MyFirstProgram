@@ -1,4 +1,14 @@
 from _19_InterpreterForCSV import *
+import datetime
+import time
+
+
+def elapsed_interval(start, end):
+    elapsed = end - start
+    min, secs = divmod(elapsed.days * 86400 + elapsed.seconds, 60)
+    hour, minutes = divmod(min, 60)
+    return '%.2d:%.2d:%.2d' % (hour, minutes, secs)
+
 
 linecounter = 1  # sets variable linecounter to 1
 logr = input('LOG (True/False): ')  # sets boolean logr to to user assigned bool (for logging purposes)
@@ -31,12 +41,16 @@ def create(gn, sn, storage):
         return str(input(string))
 
     data = read_csv(storage, True)
-    if data[0].startswith('!ERROR') or not ', '.join(data[0]) == 'GNAME, SNAME, ROLE, TRATE, SUPER, HLTH, MON, TUE, ' \
-                                                                 'WED, THU, FRI, SAT, SUN, LASTCHECKIN, LASTCHECKOUT':
+    if data[0].startswith('!ERROR') or not ', '.join(
+            data[0]) == 'KEY, GNAME, SNAME, ROLE, TRATE, SUPER, HLTH, MON, TUE, ' \
+                        'WED, THU, FRI, SAT, SUN, LASTCHECKIN, LASTCHECKOUT':
+        print('CREATING NEW DATA CSV')
         write_csv_record(storage, [
-            ['GNAME', 'SNAME', 'ROLE', 'TRATE', 'SUPER', 'HLTH', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN',
+            ['KEY', 'GNAME', 'SNAME', 'ROLE', 'TRATE', 'SUPER', 'HLTH', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN',
              'LASTCHECKIN', 'LASTCHECKOUT']])
-    print('Please enter the information for ' + gn + ' ' + sn + '.')
+    newdata = read_csv(storage, True)
+    key = "{0:0=3d}".format(int(newdata[len(newdata) - 1]['KEY']) + 1)
+    print('\nPlease enter the information for ' + gn + ' ' + sn + '.')
     role = nv('ROLE (Barista/Manager): ').strip()
     role = role.lower()
     if role == 'barista' or role == 'manager':
@@ -48,12 +62,24 @@ def create(gn, sn, storage):
         pass
     else:
         error('!ERROR!', 'Incorrect TRATE input.')
-    trate = nv('TRATE (4/6/8)').strip()
-    if trate == '4' or trate == '6' or '8':
+    superr = nv('SUPER (4/6/8)').strip()
+    if superr == '4' or superr == '6' or superr == '8':
         pass
     else:
-        error('!ERROR!', 'Incorrect TRATE input.')
-    append_csv_record(storage, [gn, sn, role, trate, superr, hlth, mon, tue, wed, thu, fri, sat, sun, lastcheckin, lastcheckout])
+        error('!ERROR!', 'Incorrect SUPER input.')
+    hlth = nv('HLTH (15/25/45)').strip()
+    if hlth == '15' or hlth == '25' or hlth == '45':
+        pass
+    else:
+        error('!ERROR!', 'Incorrect HLTH input.')
+    append_csv_record(storage,
+                      [key, gn, sn, role, trate, superr, hlth, 'n/a', 'n/a', 'n/a', 'n/a', 'n/a', 'n/a', 'n/a', 'n/a',
+                       'n/a'])
+    print('CREATED NEW USER DATA')
+
+
+def checkin(gn, sn, storage):
+    update_csv_record(storage, True, 1, 'LASTCHECKIN', str(datetime.datetime.now()))
 
 
 def run():
@@ -78,10 +104,15 @@ def run():
     elif x == 3:
         print(wages(gname, sname, storage))
     elif x == 4:
-        print(create(gname, sname, storage))
+        create(gname, sname, storage)
     else:
         error('!ERROR_2!', 'Incorrect Input')
 
 
 if __name__ == '__main__':
-    run()
+    time_start = str(datetime.datetime.now())
+    print(time_start)
+    """time.sleep(5)
+    time_end = float(str(datetime.hour()))
+    total_time = elapsed_interval(time_start, time_end)
+    print(total_time)"""
