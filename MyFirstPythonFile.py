@@ -32,7 +32,7 @@ def StartUp():
         try:
             inputvar = int(input('-> '))
         except ValueError:
-            pass
+            inputvar = 'VALUEERROR'
         if isinstance(inputvar, int):
             break
         else:

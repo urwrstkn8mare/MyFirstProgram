@@ -1,0 +1,8 @@
+GNAME, SNAME, ROLE, TRATE, SUPER, HLTH, MON, TUE, WED, THU, FRI, SAT, SUN, LASTCHECKIN, LASTCHECKOUT, KEY
+Samit, Shaikh, manager, 30, 6, 25, 3, n/a, n/a, n/a, n/a, n/a, n/a, 2018-09-03 21:10:09.877697, 2018-09-03 24:10:37.538685, 0
+John Lee, Doe, barista, 40, 8, 45, 5, 11, 16, 4, 5, 3, 5, 2018-09-03 18:55:03.098505, 2018-09-03 23:08:54.738799, 1
+Donald, Trump, manager, 40, 8, 45, 4, 7, 3, 7, 4, 6, 1, 2018-09-03 18:55:16.913863, n/a, 2
+Harry, Grapes, barista, 30, 4, 25, 9, 9, 9, 0, 9, 6, 10, n/a, n/a, 3
+Marg, Plum, manager, 40, 4, 15, 11, 8, 9, 9, 0, 5, 5, n/a, n/a, 4
+Monica, Nguyen, barista, 30, 6, 15, 12, 9, 0, 9, 6, 9, 9, n/a, n/a, 5
+Liam, Ranwood, barista, 40, 8, 45, 12, 9, 0, 9, 6, 9, 9, n/a, n/a, 6

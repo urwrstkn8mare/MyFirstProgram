@@ -129,7 +129,7 @@ def find_csv_record(filename, key_value, **key):
             if csvfile[l][keyy] == key_value:
                 return csvfile[l]
         except IndexError:
-            error(
+            return error(
                 '!ERROR! CSV not formatted correctly to be used by this program.\nThere must be header and header '
                 'must have a key field to use.')
 
@@ -140,7 +140,7 @@ def update_csv_record(filename, header, row, field, new_value):
     try:
         csvfile[row][field] = new_value
     except IndexError:
-        error('!ERROR! Row and field are not found in file.')
+        return error('!ERROR! Row and field are not found in file.')
     log('csvfile -> ' + str(csvfile))
     log('csvfile[row][field] -> ' + str(csvfile))
     newfile = [', '.join(csvfile[0])]
@@ -166,14 +166,14 @@ def append_csv_record(filename, listt):
         csvfile = read_csv(filename, False)
         if len(listt) == len(csvfile[0]):
             f = open(filename, 'a')
-            f.write(', '.join(listt))
+            f.write(', '.join(listt) + '\n')
             f.close()
         else:
-            error(
+            return error(
                 '!ERROR! CSV file will not be formatted correctly with this new row. (The number of fields in input '
                 'is not the same as file inputted)')
     else:
-        error('!ERROR! Parameter list is not a list. (it should be)')
+        return error('!ERROR! Parameter list is not a list. (it should be)')
 
 
 def write_csv_record(filename, inside):
@@ -186,13 +186,13 @@ def write_csv_record(filename, inside):
                 if old == new:
                     f.write(', '.join(inside[d]) + '\n')
                 else:
-                    error('!ERROR! Lines do not have same number of fields. (The file may be incomplete or corrupted.)')
+                    return error('!ERROR! Lines do not have same number of fields. (The file may be incomplete or corrupted.)')
             else:
-                error(
+                return error(
                     '!ERROR! Parameters other than filename should be lists. (The file may be incomplete or corrupted.)')
     except IndexError:
         f.close()
-        error('!ERROR! Parameters were incorrectly inputted. (The file may be incomplete or corrupted.)')
+        return error('!ERROR! Parameters were incorrectly inputted. (The file may be incomplete or corrupted.)')
     f.close()
 
 
