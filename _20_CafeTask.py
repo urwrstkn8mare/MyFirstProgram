@@ -2,14 +2,6 @@ from _19_InterpreterForCSV import *
 import datetime
 import time
 
-
-def elapsed_interval(start, end):
-    elapsed = end - start
-    min, secs = divmod(elapsed.days * 86400 + elapsed.seconds, 60)
-    hour, minutes = divmod(min, 60)
-    return '%.2d:%.2d:%.2d' % (hour, minutes, secs)
-
-
 linecounter = 1  # sets variable linecounter to 1
 logr = input('LOG (True/False): ')  # sets boolean logr to to user assigned bool (for logging purposes)
 print()
@@ -17,6 +9,13 @@ if logr.lower() == 'true':
     logr = True
 else:
     logr = False
+
+
+def time(tm):
+    tim = str(tm).split(' ')
+    halfone = tim[0].split('-')
+    halftwo = tim[1].split(':')
+    return [int(halfone[2]), int(halfone[1]), int(halfone[0]), int(halftwo[0]), int(halftwo[1]), float(halftwo[2])]
 
 
 def log(text):
@@ -36,20 +35,29 @@ def error(err, string):
     return err
 
 
+def name2numb(gn, sn, storage):
+    result = False
+    set = read_csv(storage, True)
+    for i in range(len(set)):
+        if set[i]['GNAME'].lower() == gn.lower() and set[i]['SNAME'].lower() == sn.lower():
+            result = i
+    if not result:
+        error('!ERROR!', 'Could not find row assigned to name.')
+    return result
+
+
 def create(gn, sn, storage):
     def nv(string):
         return str(input(string))
 
     data = read_csv(storage, True)
     if data[0].startswith('!ERROR') or not ', '.join(
-            data[0]) == 'KEY, GNAME, SNAME, ROLE, TRATE, SUPER, HLTH, MON, TUE, ' \
+            data[0]) == 'GNAME, SNAME, ROLE, TRATE, SUPER, HLTH, MON, TUE, ' \
                         'WED, THU, FRI, SAT, SUN, LASTCHECKIN, LASTCHECKOUT':
         print('CREATING NEW DATA CSV')
         write_csv_record(storage, [
-            ['KEY', 'GNAME', 'SNAME', 'ROLE', 'TRATE', 'SUPER', 'HLTH', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN',
+            ['GNAME', 'SNAME', 'ROLE', 'TRATE', 'SUPER', 'HLTH', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN',
              'LASTCHECKIN', 'LASTCHECKOUT']])
-    newdata = read_csv(storage, True)
-    key = "{0:0=3d}".format(int(newdata[len(newdata) - 1]['KEY']) + 1)
     print('\nPlease enter the information for ' + gn + ' ' + sn + '.')
     role = nv('ROLE (Barista/Manager): ').strip()
     role = role.lower()
@@ -73,13 +81,28 @@ def create(gn, sn, storage):
     else:
         error('!ERROR!', 'Incorrect HLTH input.')
     append_csv_record(storage,
-                      [key, gn, sn, role, trate, superr, hlth, 'n/a', 'n/a', 'n/a', 'n/a', 'n/a', 'n/a', 'n/a', 'n/a',
+                      [gn, sn, role, trate, superr, hlth, 'n/a', 'n/a', 'n/a', 'n/a', 'n/a', 'n/a', 'n/a', 'n/a',
                        'n/a'])
     print('CREATED NEW USER DATA')
 
 
 def checkin(gn, sn, storage):
-    update_csv_record(storage, True, 1, 'LASTCHECKIN', str(datetime.datetime.now()))
+    row = name2numb(gn, sn, storage)
+    update_csv_record(storage, True, row, 'LASTCHECKIN', str(datetime.datetime.now()))
+
+
+def checkout(gn, sn, storage):
+    row = name2numb(gn, sn, storage)
+    sett = read_csv(storage, True)
+    update_csv_record(storage, True, row, 'LASTCHECKOUT', str(datetime.datetime.now()))
+    weekday = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN']
+    timee = time(sett[row]['LASTCHECKOUT'])[3] - time(sett[row]['LASTCHECKIN'])[3]
+    day = int(datetime.datetime.today().weekday())
+    if timee < 0:
+        error('!ERROR!', 'Y' + 'OU CANNOT WORK PAST A DAY.'.lower())
+    for m in range(7 - day):
+
+    update_csv_record(storage, True, row, weekday[day], str(time))
 
 
 def run():
@@ -110,9 +133,4 @@ def run():
 
 
 if __name__ == '__main__':
-    time_start = str(datetime.datetime.now())
-    print(time_start)
-    """time.sleep(5)
-    time_end = float(str(datetime.hour()))
-    total_time = elapsed_interval(time_start, time_end)
-    print(total_time)"""
+    print(time(datetime.datetime.now()))
