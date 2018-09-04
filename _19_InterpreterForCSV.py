@@ -23,10 +23,17 @@ def error(err, string):
     return err
 
 
+def exist_csv(filename):
+    try:
+        open(str(filename))
+    except FileNotFoundError:
+        return False
+    return True
+
+
 def read_csv(filename, header):
     while True:
         if filename.endswith('.csv'):
-            global content
             try:
                 with open(str(filename)) as fr:
                     content = fr.readlines()
@@ -95,7 +102,7 @@ def read_csv(filename, header):
             if header:
                 keys.append(pp[0][g])
             else:
-                keys.append(g + 1)
+                keys.append(g)
         log('keys -> ' + str(keys))
         log('header -> ' + str(header))
         if header:
@@ -166,7 +173,10 @@ def append_csv_record(filename, listt):
         csvfile = read_csv(filename, False)
         if len(listt) == len(csvfile[0]):
             f = open(filename, 'a')
-            f.write(', '.join(listt) + '\n')
+            tmp = []
+            for n in range(len(listt)):
+                tmp.append(str(listt[n]))
+            f.write(', '.join(tmp) + '\n')
             f.close()
         else:
             return error(
@@ -184,7 +194,10 @@ def write_csv_record(filename, inside):
             if type(inside[d]) == type([]):
                 new = len(inside[d])
                 if old == new:
-                    f.write(', '.join(inside[d]) + '\n')
+                    tmp = []
+                    for n in range(len(inside[d])):
+                        tmp.append(str(inside[d][n]))
+                    f.write(', '.join(tmp) + '\n')
                 else:
                     return error('!ERROR! Lines do not have same number of fields. (The file may be incomplete or corrupted.)')
             else:
@@ -194,6 +207,21 @@ def write_csv_record(filename, inside):
         f.close()
         return error('!ERROR! Parameters were incorrectly inputted. (The file may be incomplete or corrupted.)')
     f.close()
+
+
+def insert_csv_record(filename, listt, index):
+    data = read_csv(filename, False)
+    listdata = []
+    for i in range(len(data)):
+        tmpitem = []
+        for n in range(len(data[i])):
+            tmpitem.append(data[i][n])
+        listdata.append(tmpitem)
+    listdata.insert(int(index), listt)
+    for b in range(len(listdata)):
+        if not len(listdata[b]) == len(listdata[0 - (len(listdata) - b)]):
+            return error('!ERROR_INCORRECT!', 'New line does not have the same amount of fields as other lines.')
+    write_csv_record(filename, listdata)
 
 
 def run():
@@ -216,6 +244,8 @@ def run():
     print(read_csv(testt + 'test2.csv', False))
     print(read_csv(testt + 'CSVTestData.csv', True))
     print(read_csv(testt + 'CafeTestData.csv', True))
+    print(exist_csv(testt + 'test.csv'))
+    print(insert_csv_record(testt + 'test.csv', [6, 7, 8, 9, 10], 6))
 
 
 if __name__ == '__main__':

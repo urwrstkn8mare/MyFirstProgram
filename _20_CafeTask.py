@@ -32,9 +32,9 @@ def debug(text, wp):
     return text
 
 
-def error(err, string):
+def er(err, string):
     print(err + ' ' + string)
-    input('Enter to continue...')
+    input('Enter to exit...')
     return err
 
 
@@ -59,22 +59,22 @@ def create(gn, sn, storage):
     if role == 'barista' or role == 'manager':
         pass
     else:
-        return error('!ERROR!', 'Incorrect ROLE input.')
+        return er('!ERROR!', 'Incorrect ROLE input.')
     trate = nv('TRATE (30/40)').strip()
     if trate == '30' or trate == '40':
         pass
     else:
-        return error('!ERROR!', 'Incorrect TRATE input.')
+        return er('!ERROR!', 'Incorrect TRATE input.')
     superr = nv('SUPER (4/6/8)').strip()
     if superr == '4' or superr == '6' or superr == '8':
         pass
     else:
-        return error('!ERROR!', 'Incorrect SUPER input.')
+        return er('!ERROR!', 'Incorrect SUPER input.')
     hlth = nv('HLTH (15/25/45)').strip()
     if hlth == '15' or hlth == '25' or hlth == '45':
         pass
     else:
-        return error('!ERROR!', 'Incorrect HLTH input.')
+        return er('!ERROR!', 'Incorrect HLTH input.')
     data = read_csv(storage, True)
     key = str(len(data))
     append_csv_record(storage,
@@ -92,7 +92,7 @@ def checkin(gn, sn, storage):
         update_csv_record(storage, True, int(sett['KEY']), 'LASTCHECKIN', now)
         print('CHECKED IN AT ' + now)
     else:
-        return error('!ERROR_NOT_FOUND!', 'Could not find given name and username.')
+        return er('!ERROR_NOT_FOUND!', 'Could not find given name and username.')
 
 
 def checkout(gn, sn, storage):
@@ -109,13 +109,13 @@ def checkout(gn, sn, storage):
             timee = time(sett['LASTCHECKOUT'])[3] - time(sett['LASTCHECKIN'])[3]
             day = int(datetime.datetime.today().weekday())
             if timee < 0:
-                return error('!ERROR!', 'Y' + 'OU CANNOT WORK PAST A DAY.'.lower())
+                return er('!ERROR!', 'Y' + 'OU CANNOT WORK PAST A DAY.'.lower())
             for m in range(7 - day):
                 update_csv_record(storage, True, int(sett['KEY']), weekday[day + m], 'n/a')
             update_csv_record(storage, True, int(sett['KEY']), weekday[day], str(timee))
         print('CHECKED OUT AT ' + now)
     else:
-        return error('!ERROR_NOT_FOUND!', 'Could not find given name and username.')
+        return er('!ERROR_NOT_FOUND!', 'Could not find given name and username.')
 
 
 def wages(gn, sn, storage):
@@ -130,7 +130,7 @@ def wages(gn, sn, storage):
         elif sett['ROLE'].lower() == 'manager':
             rate = 30
         else:
-            return error('!ERROR_CORRUPT!', 'Incorrectly filled role data.')
+            return er('!ERROR_CORRUPT!', 'Incorrectly filled role data.')
         debug('role: ' + str(sett['ROLE']), True)
         for i in range(len(weekday)):
             if not sett[weekday[i]] == 'n/a':
@@ -151,12 +151,12 @@ def wages(gn, sn, storage):
                     elif int(sett[weekday[i]]) <= 9 and i <= 4:
                         wagetmp = int(sett[weekday[i]]) * rate
                     else:
-                        return error('!ERROR!', 'Problem with validating pay rates.')
+                        return er('!ERROR!', 'Problem with validating pay rates.')
                     debug('wagetmp: ' + str(wagetmp), True)
                 except ValueError:
-                    return error('!ERROR_CORRUPT_2!', 'Incorrectly filled hour data.')
+                    return er('!ERROR_CORRUPT_2!', 'Incorrectly filled hour data.')
             else:
-                return error('!ERROR!', 'All working hours not defined.')
+                return er('!ERROR!', 'All working hours not defined.')
             wage = wage + wagetmp
         super = int(sett['SUPER'])
         debug('super: ' + str(super), True)
@@ -168,40 +168,42 @@ def wages(gn, sn, storage):
         debug('final: ' + str(((wage * (100 - super) / 100) - hlth) * (100 - tax) / 100), True)
         return ((wage * (100 - super) / 100) - hlth) * (100 - tax) / 100
     else:
-        return error('!ERROR_NOT_FOUND!', 'Could not find given name and username.')
+        return er('!ERROR_NOT_FOUND!', 'Could not find given name and username.')
 
 
 def run():
-        while True:
-            storage = input('CSV Data: ')
-            print('!NOTE! This program stores information in ' + storage + '.\nWelcome to Cafe')
-            print('Please choose your action: ')
-            print('     1 - Check In')
-            print('     2 - Check Out')
-            print('     3 - Calculate Wages')
-            print('     4 - Create Employee Data')
-            try:
-                x = int(input('  -> '))
-            except ValueError:
-                error('!ERROR_1!', 'Incorrect Input')
-                x = 0
-            gname = str(input('\nEmployee GNAME: ')).strip()
-            sname = str(input('\nEmployee SNAME: ')).strip()
-            print('')
-            if x == 1:
-                checkin(gname, sname, storage)
-            elif x == 2:
-                checkout(gname, sname, storage)
-            elif x == 3:
-                print(wages(gname, sname, storage))
-            elif x == 4:
-                create(gname, sname, storage)
-            else:
-                error('!ERROR_2!', 'Incorrect Input')
-            print('\nRestart Cafe data program? (y/n)')
-            if not input('  -> ').lower() == 'y':
-                break
-            print('')
+    storage = input('CSV Data: ')
+    if not exist_csv(storage):
+        return er('!ERROR_NOT_FOUND!', 'CSV Data file not found.')
+    while True:
+        print('!NOTE! This program stores information in ' + storage + '.\nWelcome to Cafe')
+        print('Please choose your action: ')
+        print('     1 - Check In')
+        print('     2 - Check Out')
+        print('     3 - Calculate Wages')
+        print('     4 - Create Employee Data')
+        try:
+            x = int(input('  -> '))
+        except ValueError:
+            return er('!ERROR_1!', 'Incorrect Input')
+            x = 0
+        gname = str(input('\nEmployee GNAME: ')).strip()
+        sname = str(input('\nEmployee SNAME: ')).strip()
+        print('')
+        if x == 1:
+            checkin(gname, sname, storage)
+        elif x == 2:
+            checkout(gname, sname, storage)
+        elif x == 3:
+            print(wages(gname, sname, storage))
+        elif x == 4:
+            create(gname, sname, storage)
+        else:
+            return er('!ERROR_2!', 'Incorrect Input')
+        print('\nRestart Cafe data program? (y/n)')
+        if not input('  -> ').lower() == 'y':
+            break
+        print('')
 
 
 if __name__ == '__main__':
