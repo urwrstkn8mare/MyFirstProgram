@@ -1,6 +1,6 @@
 # MyFirstProgram
 
-**NOTE __The latest version is accidentally broken (I committed early). Please use the latest commit before the one that says unfinished.__**
+**NOTE *The latest version is accidentally broken (I committed early). Please use the latest commit before the one that says unfinished.***
 
 ## About
 This is where almost all my work on python both in and out of school is stored. Nobody but me works on it unless otherwise decided. This is just for my own education or experience and serves no actual use.
