@@ -1,47 +1,38 @@
-linecounter = 1  # sets variable linecounter to 1
-logr = input('LOG (True/False): ')  # sets boolean logr to to user assigned bool (for logging purposes)
-print()
-if logr.lower() == 'true':
-    logr = True
-else:
-    logr = False
+logr = input('LOG (True/False): ').lower() in ['true', '1', 't', 'y', 'yes', 'yeah', 'yup', 'certainly',
+                                               'uh-huh']  # If userinput is in the list then variable logr is True
+print()  # Print new line
 
 
-def log(text):
-    global logr
-    global linecounter
-    if logr:
-        print('LOG>>> ' + str(text) + ' <<< ' + str(linecounter))
-        linecounter += 1
-    else:
-        pass
-    return
+def log(name, text, validation):  # Define function log with parameters: name, text and validation
+    if validation:  # If variable validation is True then...
+        print(
+            'LOG>>> ' + str(text) + ' <<< ' + str(name))  # ... print 'LOG>>>', variable text, '<<<' then variable name.
 
 
-def error(err, string):
-    print(err + ' ' + string)
-    return err
+def error(err, string):  # Define function error with parameters: err and string
+    print(err + ' ' + string)  # Print variables err and string with a space in between.
+    return err  # Return variable err.
 
 
-def exist_csv(filename):
+def exist(filename):
     try:
-        open(str(filename))
+        open(str(filename))  # tries to open file
     except FileNotFoundError:
-        return False
-    return True
+        return False  # if error then returns false
+    return True  # else returns true
 
 
 def read_csv(filename, header):
-    while True:
-        if filename.endswith('.csv'):
+    while True:  # infinite loop unless breaked
+        if filename.endswith('.csv'):  # if filename ends with '.csv'
             try:
-                with open(str(filename)) as fr:
+                with open(str(filename)) as fr:  # tries to read filename
                     content = fr.readlines()
-                    content = [xx.strip() for xx in content]
-            except FileNotFoundError:
+                    content = [xx.strip() for xx in content]  # strips whitespace
+            except FileNotFoundError:  # if file not found then outputs custom error
                 return error('!ERROR_02!',
                              'The file you gave was not found or there was a problem with the program. (the file must '
-                             'be in the same directory as this program.)')
+                             'be in the same directory as this program.)')  #
             for i in range(len(content)):
                 if content[i].find(',') == -1:
                     return error('!ERROR_03!', 'Not formatted correctly according to CSV format.')
@@ -169,62 +160,67 @@ def update_csv_record(filename, header, row, field, new_value):
 
 
 def append_csv_record(filename, listt):
-    if type(listt) == type([]):
-        csvfile = read_csv(filename, False)
-        if len(listt) == len(csvfile[0]):
-            f = open(filename, 'a')
-            tmp = []
-            for n in range(len(listt)):
-                tmp.append(str(listt[n]))
-            f.write(', '.join(tmp) + '\n')
-            f.close()
-        else:
+    if isinstance(listt, list):  # checks if listt is a list
+        csvfile = read_csv(filename, False)  # reads filename with no headers and outputs into csvfile
+        if len(listt) == len(csvfile[
+                                 0]):  # checks if the number of items in listt is the same as the number of items in 0 of csvfile.
+            with open(filename, 'a') as f:  # opens filename
+                tmp = []
+                for n in range(len(listt)):
+                    tmp.append(str(listt[n]))
+                f.write(', '.join(tmp) + '\n')
+                f.close()
+        else:  # else returns error
             return error(
                 '!ERROR! CSV file will not be formatted correctly with this new row. (The number of fields in input '
                 'is not the same as file inputted)')
-    else:
+    else:  # else returns error
         return error('!ERROR! Parameter list is not a list. (it should be)')
 
 
 def write_csv_record(filename, inside):
-    f = open(filename, 'w')
-    try:
-        old = len(inside[0])
-        for d in range(len(inside)):
-            if type(inside[d]) == type([]):
-                new = len(inside[d])
-                if old == new:
-                    tmp = []
-                    for n in range(len(inside[d])):
-                        tmp.append(str(inside[d][n]))
-                    f.write(', '.join(tmp) + '\n')
-                else:
-                    return error('!ERROR! Lines do not have same number of fields. (The file may be incomplete or corrupted.)')
-            else:
-                return error(
-                    '!ERROR! Parameters other than filename should be lists. (The file may be incomplete or corrupted.)')
-    except IndexError:
-        f.close()
-        return error('!ERROR! Parameters were incorrectly inputted. (The file may be incomplete or corrupted.)')
-    f.close()
+    with open(filename, 'w') as f:  # opens filename with write permissions
+        try:  # tries the following
+            old = len(inside[0])  # make variable old the number of fields in inside[0]
+            for d in range(len(inside)):  # loops while number d is in the number of items in inside.
+                if isinstance(inside[d], list):  # checks if d of inside is a list
+                    new = len(inside[d])  # makes new the number of items in d of inside
+                    if old == new:  # checks if old is the same as new
+                        tmp = []  # creates tmp list
+                        for n in range(len(inside[d])):  # loops while n is in the number of items in d of inside
+                            tmp.append(str(inside[d][n]))  # appends string form of n of d of inside
+                        f.write(', '.join(
+                            tmp) + '\n')  # joins together items in tmp with comma and writes it to the file. Adds a new line after.
+                    else:  # else returns error
+                        return error(
+                            '!ERROR! Lines do not have same number of fields. (The file may be incomplete or corrupted.)')
+                else:  # else returns error
+                    return error(
+                        '!ERROR! Parameters other than filename should be lists. (The file may be incomplete or corrupted.)')
+        except IndexError:  # if there is an index error closes file and returns error
+            f.close()
+            return error('!ERROR! Parameters were incorrectly inputted. (The file may be incomplete or corrupted.)')
+        f.close()  # closes file
 
 
 def insert_csv_record(filename, listt, index):
-    data = read_csv(filename, False)
-    listdata = []
-    for i in range(len(data)):
-        tmpitem = []
-        for n in range(len(data[i])):
-            tmpitem.append(data[i][n])
-        listdata.append(tmpitem)
-    listdata.insert(int(index), listt)
-    for b in range(len(listdata)):
-        if not len(listdata[b]) == len(listdata[0 - (len(listdata) - b)]):
+    data = read_csv(filename, False)  # reads file and outputs into data
+    listdata = []  # creates empty list, listdata
+    for i in range(len(data)):  # while i is in the number of items in data
+        tmpitem = []  # creates emptyl list, tmpitem
+        for n in range(len(data[i])):  # while n is in the number of items in i of data
+            tmpitem.append(data[i][n])  # appends to tmpitem n of i of data
+        listdata.append(tmpitem)  # appends tmpitem to listdata
+    listdata.insert(int(index), listt)  # inserts listt at index into listdata
+    for b in range(len(listdata)):  # while b is in the number of items in listdata
+        if not len(listdata[b]) == len(listdata[0 - (len(listdata) - b)]):  # checks if the number of items in b of
+            # listdata is not equal to the number of items in (0 - len(listdata) - b) of listdata). Also returns error after
             return error('!ERROR_INCORRECT!', 'New line does not have the same amount of fields as other lines.')
-    write_csv_record(filename, listdata)
+    write_csv_record(filename, listdata)  # if no errors are returned then overwrites listdata to filename
 
 
 def run():
+    # to test my functions :)
     testt = 'tests/'
     test = read_csv(testt + 'test.csv', True)
     print('\n' + str(test))
@@ -244,7 +240,7 @@ def run():
     print(read_csv(testt + 'test2.csv', False))
     print(read_csv(testt + 'CSVTestData.csv', True))
     print(read_csv(testt + 'CafeTestData.csv', True))
-    print(exist_csv(testt + 'test.csv'))
+    print(exist(testt + 'test.csv'))
     print(insert_csv_record(testt + 'test.csv', [6, 7, 8, 9, 10], 6))
 
 

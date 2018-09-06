@@ -173,7 +173,7 @@ def wages(gn, sn, storage):
 
 def run():
     storage = input('CSV Data: ')
-    if not exist_csv(storage):
+    if not exist(storage):
         return er('!ERROR_NOT_FOUND!', 'CSV Data file not found.')
     while True:
         print('!NOTE! This program stores information in ' + storage + '.\nWelcome to Cafe')
