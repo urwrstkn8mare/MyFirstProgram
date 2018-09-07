@@ -48,7 +48,8 @@ def create(gn, sn, storage):
     except AttributeError:
         strt = False
     if strt or not ', '.join(
-            data[0]) == 'GNAME, SNAME, ROLE, TRATE, SUPER, HLTH, MON, TUE, WED, THU, FRI, SAT, SUN, LASTCHECKIN, LASTCHECKOUT, KEY':
+            data[
+                0]) == 'GNAME, SNAME, ROLE, TRATE, SUPER, HLTH, MON, TUE, WED, THU, FRI, SAT, SUN, LASTCHECKIN, LASTCHECKOUT, KEY':
         print('CREATING NEW DATA CSV')
         write_csv_record(storage, [
             ['GNAME', 'SNAME', 'ROLE', 'TRATE', 'SUPER', 'HLTH', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN',
@@ -121,7 +122,7 @@ def checkout(gn, sn, storage):
 def wages(gn, sn, storage):
     test1 = find_csv_record(storage, gn, key='GNAME')
     test2 = find_csv_record(storage, sn, key='SNAME')
-    if test1 == test2 and not test1 == None and not test2 == None:
+    if test1 == test2 and not test1 is None and not test2 is None:
         sett = find_csv_record(storage, gn, key='GNAME')
         weekday = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN']
         wage = 0
@@ -137,17 +138,17 @@ def wages(gn, sn, storage):
                 debug(i, True)
                 try:
                     if 0 < int(sett[weekday[i]]) - 9 <= 3 and i <= 4:
-                        wagetmp = (9 * rate) + (((int(sett[weekday[i]]) - 9) * rate) * (125/100))
+                        wagetmp = (9 * rate) + (((int(sett[weekday[i]]) - 9) * rate) * (125 / 100))
                     elif int(sett[weekday[i]]) - 9 > 3 and i <= 4:
-                        wagetmp = (9 * rate) + (((int(sett[weekday[i]]) - 9) * rate) * (145/100))
+                        wagetmp = (9 * rate) + (((int(sett[weekday[i]]) - 9) * rate) * (145 / 100))
                     elif i == 5 and int(sett[weekday[i]]) <= 9:
                         wagetmp = int(sett[weekday[i]]) * (rate + 3)
                     elif i == 6 and int(sett[weekday[i]]) <= 9:
                         wagetmp = int(sett[weekday[i]]) * (rate + 4)
                     elif int(sett[weekday[i]]) - 9 > 0 and i == 5:
-                        wagetmp = (9 * (rate + 3)) + (((int(sett[weekday[i]]) - 9) * rate) * (150/100))
+                        wagetmp = (9 * (rate + 3)) + (((int(sett[weekday[i]]) - 9) * rate) * (150 / 100))
                     elif int(sett[weekday[i]]) - 9 > 0 and i == 6:
-                        wagetmp = (9 * (rate + 4)) + (((int(sett[weekday[i]]) - 9) * rate) * (150/100))
+                        wagetmp = (9 * (rate + 4)) + (((int(sett[weekday[i]]) - 9) * rate) * (150 / 100))
                     elif int(sett[weekday[i]]) <= 9 and i <= 4:
                         wagetmp = int(sett[weekday[i]]) * rate
                     else:
