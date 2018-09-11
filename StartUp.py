@@ -12,6 +12,6 @@
 runner = __import__('MyFirstPythonFile')
 
 while True:
-    runner.StartUp()
+    runner.startup()
     if not input('\nRestart? (y/n) ').lower() == 'y':
         break
