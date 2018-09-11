@@ -335,8 +335,6 @@ def run():
     update_csv_record(thefile, True, find_csv_record(thefile, 'Chris', key='GNAME', output='rownum'), 'GNAME',
                       'Christopher')
     append_csv_record(thefile, [4, 'Humpty', 'Dumpty', 0, 35, 35, 'D', 'Started Late'])
-    append_csv_record(thefile, [5, 'test', 'test', 0, 0, 0, 'eg',
-                                'This is just a test place, to find out more go to bla bla bla dot com.'])
     print(read_csv(thefile, True))
 
 
