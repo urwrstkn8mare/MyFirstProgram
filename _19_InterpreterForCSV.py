@@ -191,6 +191,8 @@ def find_csv_record(filename, key_value, **opt):
                 else:
                     return csvfile[l]
             # If row, l, and field, keyy, is the same as the parameter, key_value.
+            else:
+                return error(name, '06.5_NOTFOUND', 'Could not find paramter.')
         except IndexError:
             return error(name,
                          '07_NOKEY',
@@ -238,7 +240,10 @@ def update_csv_record(filename, header, row, field, new_value):
         if csvfile.startswith('!ERROR'):
             return csvfile
     try:
-        csvfile[row][field] = str(new_value)
+        try:
+            csvfile[row][field] = str(new_value)
+        except TypeError:
+            return error(name, '010.5_NOTSTR', 'Row cannot be a str.')
         # Tries to value in the specified row and field with the new_value.
     except IndexError:
         return error(name, '11_PARAMPROB', 'Row and field are not found in file.')

@@ -1,12 +1,11 @@
 # Yr8CS1_Samit Shaikh_20180809
 # Binary Converter
 
-linecounter = 1  # sets variable linecounter to 1
-logr = input('LOG (True/False): ')  # sets boolean logr to to user assigned bool (for logging purposes)
-if logr.lower() == 'true':
-    logr = True
-else:
-    logr = False
+import os
+
+logr = input('LOG (True/False): ').lower() in ['true', '1', 't', 'y', 'yes', 'yeah', 'yup', 'certainly',
+                                               'uh-huh']  # If userinput is in the list then variable logr is True
+print()  # Print new line
 
 
 # To use command system:
@@ -17,46 +16,55 @@ else:
 # (find function names in code)
 
 
-def log(text):
-    global logr
-    global linecounter
-    if logr:
-        print('LOG>>> ' + str(text) + ' <<< ' + str(linecounter))
-        linecounter += 1
-    else:
-        pass
-    return
+def log(text, validator, **opt):
+    # This function accepts parameters: text, validator and 2 optional parameters.
+    namee = ''
+    # Initialise name with an empty string.
+    if 'name' in opt:
+        namee = opt['name']
+    # If user did assign a value to the optional parameter, 'name', then the value would be stored in variable name.
+    if validator:
+        if 'wait' in opt:
+            if opt['wait']:
+                input('LOG>>> Enter to continue >>>')
+            else:
+                print('LOG>>> ' + str(text) + ' <<< ' + str(namee))
+        else:
+            print('LOG>>> ' + str(text) + ' <<< ' + str(namee))
+    # If validator is True (normally this is used so when they run the program they can choose if they want logging or
+    # not.) then a string with the text and name used in it will be printed unless it is specified that the user enter's to continue.
+    # This can be specified in optional paramter, 'wait' with the value: True.
 
 
 def dec2bin(number):  # defines function as dec2bin
     try:
         number = int(number)  # turns variable number into integer
-        log(number)  # logs variable number
+        log(number, logr)  # logs variable number
         if str(number).find('-') > -1:  # checks if their is a '-' in number
             number = str(number).replace('-', '')  # if returned true than variable number has the '-' removed
             number = int(number)  # make number variable back into integer
             negative = True  # set boolean variable negative to true.
         else:
             negative = False  # if returned false, boolean variable negative is set false
-        log(number)  # log variable number
-        log(negative)  # log variable negative
+        log(number, logr)  # log variable number
+        log(negative, logr)  # log variable negative
         if number == 0:  # checks if variable number is 0
             binumber = '0'  # if returned true, sets string variable binumber to '0'
-            log(binumber)  # logs variable binumber
+            log(binumber, logr)  # logs variable binumber
         else:
             binumber = ''  # if returned false, sets string variable binumber to empty string
-            log(binumber)  # logs variable binumber
+            log(binumber, logr)  # logs variable binumber
             while number > 0:  # loops if variable number is less than 0
                 binumber = str(
                     number % 2) + binumber  # sets variable binumber to the remainder of variable number divided by 2 added to the left of variable binumber as a string
                 number = number // 2  # sets variable number to variable number divided by 2 without remainders or in decimal form
-                log(binumber)  # logs variable binumber
-                log(number)  # logs variable number
+                log(binumber, logr)  # logs variable binumber
+                log(number, logr)  # logs variable number
         if negative:  # checks if variable negative is true
             binumber = '-' + binumber  # if returned true, variable binumber has '-' added to the left of itself
         else:
             pass  # if returned false, do nothing
-        log(binumber)  # logs binumber
+        log(binumber, logr)  # logs binumber
         binumber = int(binumber)
     except ValueError:
         print('! Must input number !')
@@ -66,17 +74,17 @@ def dec2bin(number):  # defines function as dec2bin
 
 def bin2dec(number):  # defines function as bin2dec
     bbinary = str(number)  # sets bbinary to variable number as string
-    log(bbinary)  # logs variable bbinary
+    log(bbinary, logr)  # logs variable bbinary
     ddecimal = 0  # sets ddecimal to 0
-    log(ddecimal)  # logs variable ddecimal
+    log(ddecimal, logr)  # logs variable ddecimal
     i = 0  # sets i to 0
     while i < len(bbinary):  # loops while i is less than the number of characters in variable bbinary
-        log(0 - (i + 1))  # logs the output of variable i add 1 subtracted from 0
-        log(i)  # logs variable i
+        log(0 - (i + 1), logr)  # logs the output of variable i add 1 subtracted from 0
+        log(i, logr)  # logs variable i
         mathh = ((2 ** i) * int(bbinary[0 - (i + 1)]))
-        log(mathh)  # log variable mathh
+        log(mathh, logr)  # log variable mathh
         ddecimal = ddecimal + mathh  # sets variable ddecimal to itself added to varibale mathh
-        log(ddecimal)  # log variable ddecimal
+        log(ddecimal, logr)  # log variable ddecimal
         i += 1  # sets variable i to 1 added to itself
     return ddecimal  # returns variable ddecimal
 
@@ -179,15 +187,15 @@ def run():
     while True:  # loops forever unless broken
         try:
             command = str(input('command: '))  # sets variable command to user input as string.
-            log(command)  # logs variable command
+            log(command, logr)  # logs variable command
             command = command.split('-', 1)  # splits variable command between the first '-'
-            log(command)  # logs variable command
+            log(command, logr)  # logs variable command
             value = command[1]  # sets variable value to the second string in list variable command
             cmd = command[0]  # sets variable cmd to the first string in list variable command
-            log(value)  # logs variable value
-            log(cmd)  # logs variable value
+            log(value, logr)  # logs variable value
+            log(cmd, logr)  # logs variable value
             value = value.split(',')  # splits variable value between ','
-            log(value)  # logs variable value
+            log(value, logr)  # logs variable value
         except IndexError:
             print('!ERROR! Command not split from value by \'-\'')
             if restart():
@@ -220,7 +228,7 @@ def run():
             elif cmd == 'readfileval':
                 print(readfileval(value[0]))
             elif cmd == 'log':  # if above is false then if variable cmd is 'log'
-                print(log(value[0]))  # logs the first of list variable value
+                print(log(value[0], logr))  # logs the first of list variable value
             else:
                 print('!ERROR! Command not found.')  # else, print error
                 if restart():
