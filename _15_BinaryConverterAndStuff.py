@@ -3,8 +3,8 @@
 
 import os
 
-logr = input('LOG (True/False): ').lower() in ['true', '1', 't', 'y', 'yes', 'yeah', 'yup', 'certainly',
-                                               'uh-huh']  # If userinput is in the list then variable logr is True
+logb = input('LOGB (True/False): ').lower() in ['true', '1', 't', 'y', 'yes', 'yeah', 'yup', 'certainly',
+                                                'uh-huh']  # If userinput is in the list then variable logb is True
 print()  # Print new line
 
 
@@ -39,32 +39,32 @@ def log(text, validator, **opt):
 def dec2bin(number):  # defines function as dec2bin
     try:
         number = int(number)  # turns variable number into integer
-        log(number, logr)  # logs variable number
+        log(number, logb)  # logs variable number
         if str(number).find('-') > -1:  # checks if their is a '-' in number
             number = str(number).replace('-', '')  # if returned true than variable number has the '-' removed
             number = int(number)  # make number variable back into integer
             negative = True  # set boolean variable negative to true.
         else:
             negative = False  # if returned false, boolean variable negative is set false
-        log(number, logr)  # log variable number
-        log(negative, logr)  # log variable negative
+        log(number, logb)  # log variable number
+        log(negative, logb)  # log variable negative
         if number == 0:  # checks if variable number is 0
             binumber = '0'  # if returned true, sets string variable binumber to '0'
-            log(binumber, logr)  # logs variable binumber
+            log(binumber, logb)  # logs variable binumber
         else:
             binumber = ''  # if returned false, sets string variable binumber to empty string
-            log(binumber, logr)  # logs variable binumber
+            log(binumber, logb)  # logs variable binumber
             while number > 0:  # loops if variable number is less than 0
                 binumber = str(
                     number % 2) + binumber  # sets variable binumber to the remainder of variable number divided by 2 added to the left of variable binumber as a string
                 number = number // 2  # sets variable number to variable number divided by 2 without remainders or in decimal form
-                log(binumber, logr)  # logs variable binumber
-                log(number, logr)  # logs variable number
+                log(binumber, logb)  # logs variable binumber
+                log(number, logb)  # logs variable number
         if negative:  # checks if variable negative is true
             binumber = '-' + binumber  # if returned true, variable binumber has '-' added to the left of itself
         else:
             pass  # if returned false, do nothing
-        log(binumber, logr)  # logs binumber
+        log(binumber, logb)  # logs binumber
         binumber = int(binumber)
     except ValueError:
         print('! Must input number !')
@@ -74,17 +74,17 @@ def dec2bin(number):  # defines function as dec2bin
 
 def bin2dec(number):  # defines function as bin2dec
     bbinary = str(number)  # sets bbinary to variable number as string
-    log(bbinary, logr)  # logs variable bbinary
+    log(bbinary, logb)  # logs variable bbinary
     ddecimal = 0  # sets ddecimal to 0
-    log(ddecimal, logr)  # logs variable ddecimal
+    log(ddecimal, logb)  # logs variable ddecimal
     i = 0  # sets i to 0
     while i < len(bbinary):  # loops while i is less than the number of characters in variable bbinary
-        log(0 - (i + 1), logr)  # logs the output of variable i add 1 subtracted from 0
-        log(i, logr)  # logs variable i
+        log(0 - (i + 1), logb)  # logs the output of variable i add 1 subtracted from 0
+        log(i, logb)  # logs variable i
         mathh = ((2 ** i) * int(bbinary[0 - (i + 1)]))
-        log(mathh, logr)  # log variable mathh
+        log(mathh, logb)  # log variable mathh
         ddecimal = ddecimal + mathh  # sets variable ddecimal to itself added to varibale mathh
-        log(ddecimal, logr)  # log variable ddecimal
+        log(ddecimal, logb)  # log variable ddecimal
         i += 1  # sets variable i to 1 added to itself
     return ddecimal  # returns variable ddecimal
 
@@ -187,15 +187,15 @@ def run():
     while True:  # loops forever unless broken
         try:
             command = str(input('command: '))  # sets variable command to user input as string.
-            log(command, logr)  # logs variable command
+            log(command, logb)  # logs variable command
             command = command.split('-', 1)  # splits variable command between the first '-'
-            log(command, logr)  # logs variable command
+            log(command, logb)  # logs variable command
             value = command[1]  # sets variable value to the second string in list variable command
             cmd = command[0]  # sets variable cmd to the first string in list variable command
-            log(value, logr)  # logs variable value
-            log(cmd, logr)  # logs variable value
+            log(value, logb)  # logs variable value
+            log(cmd, logb)  # logs variable value
             value = value.split(',')  # splits variable value between ','
-            log(value, logr)  # logs variable value
+            log(value, logb)  # logs variable value
         except IndexError:
             print('!ERROR! Command not split from value by \'-\'')
             if restart():
@@ -228,7 +228,7 @@ def run():
             elif cmd == 'readfileval':
                 print(readfileval(value[0]))
             elif cmd == 'log':  # if above is false then if variable cmd is 'log'
-                print(log(value[0], logr))  # logs the first of list variable value
+                print(log(value[0], logb))  # logs the first of list variable value
             else:
                 print('!ERROR! Command not found.')  # else, print error
                 if restart():

@@ -1,7 +1,7 @@
 import os
 
 name = os.path.realpath(__file__)
-logr = input('LOG (True/False): ').lower() in ['true', '1', 't', 'y', 'yes', 'yeah', 'yup', 'certainly',
+logr = input('LOGR (True/False): ').lower() in ['true', '1', 't', 'y', 'yes', 'yeah', 'yup', 'certainly',
                                                'uh-huh']  # If userinput is in the list then variable logr is True
 print()  # Print new line
 

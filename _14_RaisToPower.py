@@ -57,7 +57,7 @@ def run():
 
     # teachers test code
     print("My name is Samit Shaikh: ")
-    print(XpowerY(1, 1))
+    print(XpowerY(-4, 16))
     print(XpowerY(1, 2))
     print(XpowerY(2, 1))
     print(XpowerY(2, 8))

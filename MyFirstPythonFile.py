@@ -4,6 +4,7 @@ import time
 import datetime
 import os
 import sys
+from _21_Text2Maths import parse
 
 
 # importing projects
@@ -14,7 +15,7 @@ def prg(prgnumber):
     find = '_' + "{0:0=2d}".format(prgnumber) + '_'
     modulepath = [i for i in os.listdir(path) if os.path.isfile(os.path.join(path, i)) and find in i]
     if modulepath[0] == '':
-        'Could not find project.\nEnding...'
+        print('Could not find project.\nEnding...')
         exit()
     else:
         module = modulepath[0].split('.')
@@ -30,13 +31,13 @@ def startup():
     print('Please project number of the project which you wish to run')
     while True:
         try:
-            inputvar = int(input('-> '))
+            inputvar = int(parse(str(input('-> '))))
         except ValueError:
             inputvar = 'VALUEERROR'
         if isinstance(inputvar, int):
             break
         else:
-            print('You must input an INTEGER. Try again...\n')
+            print('You must input correctly. Try again...\n')
     print('\nSTARTING:')
     print('-----------------\n\n')
     start = time.time()
