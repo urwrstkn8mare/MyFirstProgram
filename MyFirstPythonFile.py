@@ -24,7 +24,7 @@ def prg(prgnumber):
     return modulepath[0]
 
 
-# cmd
+# cmdfile
 def cmd():
     def cmdprint(order):
         order = str(order[0])
