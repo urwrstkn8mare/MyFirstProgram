@@ -9,9 +9,17 @@
 # and i might add some more functionality later
 
 
-runner = __import__('MyFirstPythonFile')
+def run():
+    try:
+        runner = __import__('MyFirstPythonFile')
 
-while True:
-    runner.startup()
-    if not input('\nRestart? (y/n) ').lower() == 'y':
-        break
+        while True:
+            runner.startup()
+            if not input('\nRestart? (y/n) ').lower() == 'y':
+                break
+    except KeyboardInterrupt:
+        print('\nForce Shutting Down...')
+        return
+
+
+run()
