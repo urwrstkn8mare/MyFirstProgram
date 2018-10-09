@@ -25,6 +25,7 @@ def prg(prgnumber):
 
 
 # cmdfile
+
 def cmd():
     def cmdprint(order):
         order = str(order[0])
@@ -32,13 +33,15 @@ def cmd():
 
     def newproject(title):
         title = str(title[0])
-        template = '# Created ' + str(
-            datetime.datetime.now()) + '\n# ' + title + '\n\ndef run():\n   # Mainline code goes below' \
-                                                        ', any functions, imports or global variables ' \
-                                                        'can go outside as long as\n   # this is the ' \
-                                                        'code that is meant to run.\n\n# Ignore below ' \
-                                                        'this line.\nif __name__ == \'__main__\':\n   ' \
-                                                        'run()'
+        template = '#Created ' + str(datetime.datetime.now()) + '\n#' + title + '\n\n\ndef run():\n    \"\"' \
+                                                                                '\"\n    Mainline code goes in the' \
+                                                                                ' below, any functions, imports or' \
+                                                                                ' global variables can go outside ' \
+                                                                                'as long as\n    this is the code ' \
+                                                                                'that is meant to run.\n    \"\"\"' \
+                                                                                '\n\n# Ignore below this line.\n\n\nif' \
+                                                                                ' __name__ == \'__main__\':\n    r' \
+                                                                                'un()\n'
         z = 0
         while True:
             path = os.path.abspath(os.path.dirname(sys.argv[0])) + '/'
@@ -51,6 +54,17 @@ def cmd():
         with open('_' + "{0:0=2d}".format(z) + '_' + title + '.py', 'w+') as f:
             f.write(template)
         f.close()
+
+    def delprg(prgnumber):
+        prgnumber = int(prgnumber[0])
+        path = os.path.abspath(os.path.dirname(sys.argv[0])) + '/'
+        find = '_' + "{0:0=2d}".format(prgnumber) + '_'
+        modulepath = [l for l in os.listdir(path) if os.path.isfile(os.path.join(path, l)) and find in l]
+        if not modulepath:
+            print('Could not find project.\nEnding...')
+            return 'NOTFOUND'
+        else:
+            os.remove(str(modulepath[0]))
 
     def prgs():
         z = 0
@@ -75,7 +89,8 @@ def cmd():
         'time': lambda dud: print(datetime.datetime.now()),
         'prg': lambda number: prg(int(number[0])),
         'newprg': newproject,
-        'prgs': lambda dud: prgs()
+        'prgs': lambda dud: prgs(),
+        'delprg': delprg
     }
     end = 0
     start = 0
