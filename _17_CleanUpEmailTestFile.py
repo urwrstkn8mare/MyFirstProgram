@@ -1,9 +1,4 @@
-import urllib.request
 import os
-
-print('Downloading http://urwrstkn8mare.000webhostapp.com/samit/projects/py/file.py ...')
-url = 'http://urwrstkn8mare.000webhostapp.com/samit/projects/py/file.py'
-urllib.request.urlretrieve(url, 'file.py')
 import file
 
 

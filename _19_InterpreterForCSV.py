@@ -2,7 +2,7 @@ import os
 
 name = os.path.realpath(__file__)
 logr = input('LOGR (True/False): ').lower() in ['true', '1', 't', 'y', 'yes', 'yeah', 'yup', 'certainly',
-                                               'uh-huh']  # If userinput is in the list then variable logr is True
+                                                'uh-huh']  # If userinput is in the list then variable logr is True
 print()  # Print new line
 
 
@@ -335,7 +335,7 @@ def insert_csv_record(filename, listt, index):
 
 def run():
     print('MAINLINE')
-    thefile = 'tests/08_SamitShaikh_updatedfile.csv'
+    thefile = 'testdata/08_SamitShaikh_updatedfile.csv'
     update_csv_record(thefile, True, find_csv_record(thefile, 1, key='ID', output='rownum'), 'SEM1', 87)
     update_csv_record(thefile, True, find_csv_record(thefile, 'Chris', key='GNAME', output='rownum'), 'GNAME',
                       'Christopher')

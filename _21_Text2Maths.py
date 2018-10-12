@@ -118,7 +118,7 @@ def fileparse(file):
 
 
 def run():
-    fileparse('tests/ArithmeticExpressionsInput.txt')
+    fileparse('testdata/ArithmeticExpressionsInput.txt')
 
 
 if __name__ == '__main__':

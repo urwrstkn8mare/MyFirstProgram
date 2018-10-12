@@ -43,41 +43,40 @@ def fullsplit(string):
     return new
 
 
-def sort(string):
+def sortall(string):
     string = str(string)
-    if string.isalpha():
-        letter = fullsplit(string.lower() + ' ')
-        alphabet = fullsplit('abcdefghijklmnopqrstuvwxyz')
-        done = []
-        for i in range(len(alphabet)):
-            log(letter, logs, name='letter')
-            for n in range(len(letter)):
-                log(letter[n] + '=' + alphabet[i] + '(' + str(n) + ')', logs)
-                if letter[n] == alphabet[i]:
-                    done.append(letter[n])
-        return ''.join(done)
-    else:
-        return error('01_numfound', 'Only alphanumeric characters can be inputted. (in the alphabet)', name)
+    letter = fullsplit(string.lower() + ' ')
+    alphabet = fullsplit('abcdefghijklmnopqrstuvwxyz')
+    done = []
+    for i in range(len(alphabet)):
+        log(letter, logs, name='letter')
+        for n in range(len(letter)):
+            log(letter[n] + '=' + alphabet[i] + '(' + str(n) + ')', logs)
+            if letter[n] == alphabet[i]:
+                done.append(string[n])
+    return ''.join(done)
 
 
 def sort2(string):
     string = str(string)
     if len(string) == 2:
-        return sort(string)
+        return sortall(string)
     else:
-        return error('02_badstrlen', 'String must be 2 characters long.', name)
+        return error('01_badstrlen', 'String must be 2 characters long.', name)
 
 
 def sort3(string):
     string = str(string)
     if len(string) == 3:
-        return sort(string)
+        return sortall(string)
     else:
-        return error('03_badstrlen', 'String must be 3 characters long.', name)
+        return error('02_badstrlen', 'String must be 3 characters long.', name)
 
 
 def run():
-    print(sort(input('SORT: ')))
+    strinput = input(': ')
+    print(''.join(sorted(strinput)))
+    print(sortall(strinput))
 
 
 # Ignore below this line.
