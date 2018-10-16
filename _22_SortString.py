@@ -43,6 +43,16 @@ def fullsplit(string):
     return new
 
 
+def swap(string):
+    string = str(string)
+    if len(string) == 2:
+        string = fullsplit(string)
+        string.append(string[0])
+        return ''.join(string[1:3])
+    else:
+        return error('03_badstrlen', 'String must be 2 characters long.', name)
+
+
 def sortall(string):
     string = str(string)
     letter = fullsplit(string.lower() + ' ')
@@ -75,6 +85,7 @@ def sort3(string):
 
 def run():
     strinput = input(': ')
+    print(swap(strinput))
     print(''.join(sorted(strinput)))
     print(sortall(strinput))
 

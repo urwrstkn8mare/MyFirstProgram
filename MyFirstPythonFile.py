@@ -4,6 +4,7 @@ import time
 import datetime
 import os
 import sys
+import random
 from _21_Text2Maths import parse
 
 
@@ -82,6 +83,25 @@ def cmd():
         for h in range(len(files)):
             print(' -->' + str(files[h]))
 
+    def dice(times):
+        count = ['count', 0, 0, 0, 0, 0, 0]
+        show = input('Show rolls? (y/n)').lower() in ['true', '1', 't', 'y', 'yes', 'yeah', 'yup', 'certainly',
+                                                      'uh-huh']
+        try:
+            times = int(parse(times[0]))
+            for i in range(times):
+                x = random.randint(1, 6)
+                if show:
+                    print(x)
+                count[x] += 1
+        except ValueError:
+            print('You must input a correct value (integer or parsable string).')
+        del count[0]
+        print()
+        for z in range(len(count)):
+            print('Dice Roll ' + str(z + 1) + ': ' + str(count[z]) + ' times (' + str(
+                round((count[z] / times) * 100, 3)) + '%)')
+
     command = str(input('\n   cmd: ')).strip()
     print('-----------------\n\n')
     cmds = {
@@ -90,7 +110,8 @@ def cmd():
         'prg': lambda number: prg(int(number[0])),
         'newprg': newproject,
         'prgs': lambda dud: prgs(),
-        'delprg': delprg
+        'delprg': delprg,
+        'diceroll': dice
     }
     end = 0
     start = 0
