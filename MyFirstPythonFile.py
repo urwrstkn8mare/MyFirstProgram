@@ -1,10 +1,6 @@
 # Yr8CS1_Samit
 
-import time
-import datetime
-import os
-import sys
-import random
+from CommandImportStorage import *
 from _21_Text2Maths import parse
 
 
@@ -25,85 +21,8 @@ def prg(prgnumber):
     return modulepath[0]
 
 
-# cmdfile
-
-def cmd():
-    def cmdprint(order):
-        order = str(order[0])
-        print(str(order))
-
-    def newproject(title):
-        title = str(title[0])
-        template = '#Created ' + str(datetime.datetime.now()) + '\n#' + title + '\n\n\ndef run():\n    \"\"' \
-                                                                                '\"\n    Mainline code goes in the' \
-                                                                                ' below, any functions, imports or' \
-                                                                                ' global variables can go outside ' \
-                                                                                'as long as\n    this is the code ' \
-                                                                                'that is meant to run.\n    \"\"\"' \
-                                                                                '\n\n# Ignore below this line.\n\n\nif' \
-                                                                                ' __name__ == \'__main__\':\n    r' \
-                                                                                'un()\n'
-        z = 0
-        while True:
-            path = os.path.abspath(os.path.dirname(sys.argv[0])) + '/'
-            find = '_' + "{0:0=2d}".format(z) + '_'
-            modulepath = [l for l in os.listdir(path) if os.path.isfile(os.path.join(path, l)) and find in l]
-            if not modulepath:
-                break
-            else:
-                z += 1
-        with open('_' + "{0:0=2d}".format(z) + '_' + title + '.py', 'w+') as f:
-            f.write(template)
-        f.close()
-
-    def delprg(prgnumber):
-        prgnumber = int(prgnumber[0])
-        path = os.path.abspath(os.path.dirname(sys.argv[0])) + '/'
-        find = '_' + "{0:0=2d}".format(prgnumber) + '_'
-        modulepath = [l for l in os.listdir(path) if os.path.isfile(os.path.join(path, l)) and find in l]
-        if not modulepath:
-            print('Could not find project.\nEnding...')
-            return 'NOTFOUND'
-        else:
-            os.remove(str(modulepath[0]))
-
-    def prgs():
-        z = 0
-        files = []
-        while True:
-            path = os.path.abspath(os.path.dirname(sys.argv[0])) + '/'
-            find = '_' + "{0:0=2d}".format(z) + '_'
-            modulepath = [l for l in os.listdir(path) if os.path.isfile(os.path.join(path, l)) and find in l]
-            if not modulepath:
-                break
-            else:
-                files.append(modulepath[0])
-                z += 1
-        print('MyFirstProgram')
-        for h in range(len(files)):
-            print(' -->' + str(files[h]))
-
-    def dice(times):
-        count = ['count', 0, 0, 0, 0, 0, 0]
-        show = input('Show rolls? (y/n)').lower() in ['true', '1', 't', 'y', 'yes', 'yeah', 'yup', 'certainly',
-                                                      'uh-huh']
-        try:
-            times = int(parse(times[0]))
-            for i in range(times):
-                x = random.randint(1, 6)
-                if show:
-                    print(x)
-                count[x] += 1
-        except ValueError:
-            print('You must input a correct value (integer or parsable string).')
-        del count[0]
-        print()
-        for z in range(len(count)):
-            print('Dice Roll ' + str(z + 1) + ': ' + str(count[z]) + ' times (' + str(
-                round((count[z] / times) * 100, 3)) + '%)')
-
-    command = str(input('\n   cmd: ')).strip()
-    print('-----------------\n\n')
+def cmd(command):
+    command = str(command).strip()
     cmds = {
         'print': cmdprint,
         'time': lambda dud: print(datetime.datetime.now()),
@@ -111,11 +30,11 @@ def cmd():
         'newprg': newproject,
         'prgs': lambda dud: prgs(),
         'delprg': delprg,
-        'diceroll': dice
+        'diceroll': dice,
+        'cmds': lambda dud: print('COMMANDS:\n' + '\n'.join(cmds)),
+        'round': lambda params: print(round(float(params[0]), int(params[1]))),
+        'parse': lambda param: print(parse(str(param[0])))
     }
-    end = 0
-    start = 0
-    nowtime = 0
     ran = False
     if '-' in command:
         command = command.strip().split('-', 1)
@@ -123,29 +42,23 @@ def cmd():
         for i in range(len(cmds)):
             ran = True
             try:
-                start = time.time()
-                nowtime = datetime.datetime.now()
                 try:
                     cmds[commands[0]](commands[1])
                 except IndexError:
-                    print('\n\n-----------------\nNot enough parameters')
-                    return
-                end = time.time()
+                    print('Not enough parameters')
+                    return commands[0]
             except KeyError:
                 ran = False
             if ran:
                 break
     else:
-        print('\n\n-----------------\nNo seperating dash found.')
-        return
-    print('\n\n-----------------')
+        print('No seperating dash found.')
+        return 'cmd-NODASH'
     if not ran:
         print('Command Not Found...')
+        return 'cmd-COMMANDUNFOUND'
     else:
-        print('[' + commands[0] + ']' + ' Finished Running.')
-        print('Runtime: ' + str(end - start) + 's - elapsed time')
-        print('         ' + str(time.process_time()) + 's - processing time')
-        print('Run at ' + str(nowtime) + '\n')
+        return commands[0]
 
 
 # Start Up Module
@@ -156,7 +69,8 @@ def startup():
     while True:
         inputvar = input('-> ')
         if inputvar == 'cmd':
-            return cmd()
+            inputvar = 'cmd-' + input('   cmd: ')
+            break
         else:
             try:
                 inputvar = int(parse(str(inputvar)))
@@ -170,7 +84,10 @@ def startup():
     print('-----------------\n\n')
     start = time.time()
     nowtime = datetime.datetime.now()
-    name = prg(int(inputvar))
+    if inputvar.startswith('cmd'):
+        name = cmd(inputvar.replace('cmd-', ''))
+    else:
+        name = prg(int(inputvar))
     end = time.time()
     print('\n\n-----------------')
     print('[' + name + ']' + ' Finished Running.')

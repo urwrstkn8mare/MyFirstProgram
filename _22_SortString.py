@@ -83,11 +83,33 @@ def sort3(string):
         return error('02_badstrlen', 'String must be 3 characters long.', name)
 
 
+def quicksort(arr):
+    less = []
+    pivotList = []
+    more = []
+
+    if len(arr) <= 1:
+        return arr
+    else:
+        pivot = arr[0]
+        for i in arr:
+            if i < pivot:
+                less.append(i)
+            elif i > pivot:
+                more.append(i)
+            else:
+                pivotList.append(i)
+        less = quickSort(less)
+        more = quickSort(more)
+        return str(''.join(fullsplit(less) + pivotList + fullsplit(more)))
+
+
 def run():
     strinput = input(': ')
     print(swap(strinput))
     print(''.join(sorted(strinput)))
     print(sortall(strinput))
+    print(quicksort(strinput))
 
 
 # Ignore below this line.
