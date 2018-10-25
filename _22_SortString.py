@@ -54,6 +54,7 @@ def swap(string):
 
 
 def sortall(string):
+    # first sorting algorithm without any knowledge of the algorithms
     string = str(string)
     letter = fullsplit(string.lower() + ' ')
     alphabet = fullsplit('abcdefghijklmnopqrstuvwxyz')
@@ -65,12 +66,32 @@ def sortall(string):
             if letter[n] == alphabet[i]:
                 done.append(string[n])
     return ''.join(done)
+  
+  
+def quicksort(array):
+  # made thyis myself btw
+  if len(array) <= 1:
+    return list(array)
+  
+  middle = int((len(array) / 2) - 1)
+  print(middle)
+  pivot = array[middle]
+  del array[middle]
+  left = []
+  right = []
+  for i in range(len(array)):
+      if array[i] < pivot:
+          left.append(array[i])
+      else:
+        right.append(array[i])
+  return quicksort(left) + [pivot] + quicksort(right)
 
 
 def sort2(string):
     string = str(string)
     if len(string) == 2:
-        return sortall(string)
+        if string[1] < string[0]
+          return swap(string)
     else:
         return error('01_badstrlen', 'String must be 2 characters long.', name)
 
@@ -81,27 +102,10 @@ def sort3(string):
         return sortall(string)
     else:
         return error('02_badstrlen', 'String must be 3 characters long.', name)
+      
 
-
-def quicksort(arr):
-    less = []
-    pivotList = []
-    more = []
-
-    if len(arr) <= 1:
-        return arr
-    else:
-        pivot = arr[0]
-        for i in arr:
-            if i < pivot:
-                less.append(i)
-            elif i > pivot:
-                more.append(i)
-            else:
-                pivotList.append(i)
-        less = quickSort(less)
-        more = quickSort(more)
-        return str(''.join(fullsplit(less) + pivotList + fullsplit(more)))
+def filesort(filename):
+  # still to be completed
 
 
 def run():
