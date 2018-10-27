@@ -73,12 +73,10 @@ def startup():
             break
         else:
             try:
-                inputvar = int(parse(str(inputvar)))
+                inputvar = str(int(parse(str(inputvar))))
+                break
             except ValueError:
                 inputvar = 'VALUEERROR'
-            if isinstance(inputvar, int):
-                break
-            else:
                 print('You must input correctly. Try again...\n')
     print('\nSTARTING:')
     print('-----------------\n\n')

@@ -1,4 +1,0 @@
-0.103002 - sortd sortall
-0.10647299999999998 - sort sortall
-0.08696100000000001 - sortd sorted
-0.08880299999999999 - sort sorted
