@@ -1,7 +1,6 @@
 # Yr8CS1_Samit
 
 from CommandImportStorage import *
-from _21_Text2Maths import parse
 
 
 # importing projects
@@ -25,20 +24,23 @@ def cmd(command):
     command = str(command).strip()
     cmds = {
         'print': cmdprint,
-        'time': lambda dud: print(datetime.datetime.now()),
+        'time': thenowtime,
         'prg': lambda number: prg(int(number[0])),
         'newprg': newproject,
-        'prgs': lambda dud: prgs(),
+        'prgs': lambda duddd: prgs(),
         'delprg': delprg,
         'diceroll': dice,
-        'cmds': lambda dud: print('COMMANDS:\n' + '\n'.join(cmds)),
+        'cmds': lambda dudd: print('COMMANDS:\n' + '\n'.join(cmds)),
         'round': lambda params: print(round(float(params[0]), int(params[1]))),
-        'parse': lambda param: print(parse(str(param[0])))
+        'parse': lambda param: print(parse(str(param[0]))),
+        'sort': sort,
+        'filesort': fs
     }
     ran = False
     if '-' in command:
         command = command.strip().split('-', 1)
         commands = [str(command[0]), command[1].strip().split(',')]
+        commands[1] = [xx.strip() for xx in commands[1]]
         for i in range(len(cmds)):
             ran = True
             try:
@@ -83,12 +85,12 @@ def startup():
     start = time.time()
     nowtime = datetime.datetime.now()
     if inputvar.startswith('cmd'):
-        name = cmd(inputvar.replace('cmd-', ''))
+        nme = cmd(inputvar.replace('cmd-', ''))
     else:
-        name = prg(int(inputvar))
+        nme = prg(int(inputvar))
     end = time.time()
     print('\n\n-----------------')
-    print('[' + name + ']' + ' Finished Running.')
+    print('[' + nme + ']' + ' Finished Running.')
     print('Runtime: ' + str(end - start) + 's - elapsed time')
     print('         ' + str(time.process_time()) + 's - processing time')
     print('Run at ' + str(nowtime) + '\n')

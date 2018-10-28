@@ -26,9 +26,9 @@ def log(text, validator, **opt):
                 print('LOG>>> ' + str(text) + ' <<< ' + str(namee))
         else:
             print('LOG>>> ' + str(text) + ' <<< ' + str(namee))
-    # If validator is True (normally this is used so when they run the program they can choose if they want logging or
-    # not.) then a string with the text and name used in it will be printed unless it is specified that the user enter's to continue.
-    # This can be specified in optional paramter, 'wait' with the value: True.
+    # If validator is True (normally this is used so when they run the program they can choose if they want logging
+    # or not.) then a string with the text and name used in it will be printed unless it is specified that the user
+    # enter's to continue. This can be specified in optional paramter, 'wait' with the value: True.
 
 
 def error(nameee, err, string):
@@ -71,6 +71,10 @@ def sortall(string):
 
 def quicksort(array):
     # made thyis myself btw
+    notarray = False
+    if not isinstance(array, list):
+        array = fullsplit(array)
+        notarray = True
     if len(array) <= 1:
         return list(array)
 
@@ -84,7 +88,10 @@ def quicksort(array):
             left.append(array[i])
         else:
             right.append(array[i])
-    return quicksort(left) + [pivot] + quicksort(right)
+    result = quicksort(left) + [pivot] + quicksort(right)
+    if notarray:
+        result = ''.join(result)
+    return result
 
 
 def sort2(string):
@@ -104,24 +111,24 @@ def sort3(string):
         return error('02_badstrlen', 'String must be 3 characters long.', name)
 
 
-def filesort(filename):
+def filesort(filename, **settings):
     filename = str(filename).strip()
-    settings = {
-        'parse': False,
+    default = {
+        'parse': True,
         'forcestr': False,
         'newfile': True,
-        'newfileautoname': True,
+        'newfilename': '',
         'outputverify': True
     }
-    print('\n       Settings')
-    if input('[DEFAULT] OR [CUSTOM]: ').lower() in ['custom', 'c']:
-        settingnames = ','.join(settings).split(',')
-        for x in range(len(settingnames)):
-            settings[settingnames[x]] = input(settingnames[x] + ' -> [TRUE] OR [FALSE]: ').lower() in ['true', '1', 't',
-                                                                                                       'y', 'yes',
-                                                                                                       'yeah', 'yup',
-                                                                                                       'certainly',
-                                                                                                       'uh-huh']
+    settingnames = ','.join(default).split(',')
+    boolexceptions = ['newfilename']
+    for x in range(len(settingnames)):
+        if not settingnames[x] in settings:
+            settings[settingnames[x]] = str(default[settingnames[x]])
+        if not settingnames[x] in boolexceptions:
+            settings[settingnames[x]] = str(settings[settingnames[x]]).lower() in ['true', '1', 't', 'y', 'yes', 'yeah',
+                                                                                   'yup', 'certainly',
+                                                                                   'uh-huh']
     with open(str(filename)) as fr:
         filecontent = fr.readlines()
         fr.close()
@@ -157,29 +164,27 @@ def filesort(filename):
         verify = True
     if verify:
         if settings['newfile']:
-            if settings['newfileautoname']:
+            if settings['newfilename'] == '':
                 newfilename = filename.split('.')
                 newfilename = ''.join(newfilename[:-1]) + 'sorted.' + newfilename[-1]
             else:
-                newfilename = str(input('Filename: '))
+                newfilename = str(settings['newfilename'])
         else:
             newfilename = filename
         f = open(str(newfilename), 'w+')
         f.write('\n'.join(filecontent))
         f.close()
-        print('New Sorted File written to: ' + str(newfilename))
+        if settings['outputverify']:
+            print('New Sorted File written to: ' + str(newfilename))
     else:
-        print('Cancelled, not written to new file.')
-
+        if settings['outputverify']:
+            print('Cancelled, not written to new file.')
 
 
 def run():
-    """strinput = input(': ')
-    print(swap(strinput))
-    print(''.join(sorted(strinput)))
-    print(sortall(strinput))
-    print(quicksort(strinput.strip().split(',')))"""
-    filesort(str(input(': ')))
+    print(quicksort('test'))
+    print(quicksort(['test', 'aww', 'wow', 'wee', 'cool', '123', 'cool']))
+    # filesort(str(input(': ')))
 
 
 # Ignore below this line.

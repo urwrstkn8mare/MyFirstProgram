@@ -6,14 +6,29 @@ import sys
 import time
 import random
 from _21_Text2Maths import parse
+from _22_SortString import filesort, quicksort
 
 
 # commands
+
+def thenowtime(dud):
+    print(datetime.datetime.now())
+
+
+def fs(nme):
+    filesort(nme[0])
 
 
 def cmdprint(order):
     order = str(order[0])
     print(str(order))
+
+
+def sort(array):
+    if len(array) == 1:
+        print(quicksort(array[0]))
+    else:
+        print(quicksort(array))
 
 
 def newproject(title):
