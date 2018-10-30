@@ -2,19 +2,14 @@
 
 # Rules to define an Email Address:
 # From http://rumkin.com/software/email/rules.php
-"""
-1 The email has a localpart on the left of an @, the domain on the right. Neither the localpart nor the domain may be empty.
-2 The localpart must be 64 characters or less.
-3 The localpart can consist of labels separated by dots but there can not be two successive dots, nor can it start or end with a dot.
-3a    Labels must have at least one character.
-3b    Labels can only contain a-z, A-Z, 0-9, or any of !#$%&'*+-/=?^_`{|}~.
-4 The domain can be bracketed, unbracketed, or an IP address..
-5 Domain consists of labels separated by periods and less than 253 characters. No domain can start with a period, end with a period, or have two successive periods.
-5a    Labels consist of a-z, A-Z, 0-9, or one of !#$%&'*+-/=?^_`{|}~.
-5b    Labels must be less than 63 characters.
-5c    Labels must not start with a hyphen, end with a hyphen, or contain two successive hyphens.
-5d    The right-most label must be all alphabetic.
-"""
+"""1 The email has a localpart on the left of an @, the domain on the right. Neither the localpart nor the domain may
+be empty. 2 The localpart must be 64 characters or less. 3 The localpart can consist of labels separated by dots but
+there can not be two successive dots, nor can it start or end with a dot. 3a    Labels must have at least one
+character. 3b    Labels can only contain a-z, A-Z, 0-9, or any of !#$%&'*+-/=?^_`{|}~. 4 The domain can be bracketed,
+unbracketed, or an IP address.. 5 Domain consists of labels separated by periods and less than 253 characters. No
+domain can start with a period, end with a period, or have two successive periods. 5a    Labels consist of a-z, A-Z,
+0-9, or one of !#$%&'*+-/=?^_`{|}~. 5b    Labels must be less than 63 characters. 5c    Labels must not start with a
+hyphen, end with a hyphen, or contain two successive hyphens. 5d    The right-most label must be all alphabetic. """
 
 # Imports all necessary modules for programs.
 from email.utils import parseaddr
@@ -106,7 +101,8 @@ def checkat(email):
                         # Returns False if the last string in list variable, newsplitdomain, contains nothing.
                         returnvar = False
                     else:
-                        # Returns True if both the first and last string in list variable, newsplitdomain, contains something.
+                        # Returns True if both the first and last string in list variable, newsplitdomain, contains
+                        # something.
                         returnvar = True
     return ['checkat', returnvar]
 
@@ -138,23 +134,26 @@ def localpartdotcheck(email):
     ii = 0
     # Returns True
     returnvar = True
-    # Loops until integer variable, ii, is the same or bigger than the number of strings in list variable, localpartsplit.
+    # Loops until integer variable, ii, is the same or bigger than the number of strings in list variable,
+    # localpartsplit.
     while ii < len(localpartsplit):
         # Checks if the variable, ii, string of variable, localpartsplit, contains anything.
         if localpartsplit[ii] == '':
-            # If the variable, ii, string of variable, localpartsplit, contains nothing it returns the previous return and False and breaks the loop.
+            # If the variable, ii, string of variable, localpartsplit, contains nothing it returns the previous
+            # return and False and breaks the loop.
             returnvar = returnvar and False
             break
         else:
-            # If the variable, ii, string of variable, localpartsplit, contains something it returns the previous return and True and adds 1 to variable, ii.
+            # If the variable, ii, string of variable, localpartsplit, contains something it returns the previous
+            # return and True and adds 1 to variable, ii.
             returnvar = returnvar and True
             ii += 1
     return ['localpartdotcheck', returnvar]
 
 
 def atcheck(email):
-    # To allow other functions to find the localpart even if there are two @'s (was supposed to be mainly used by the the quotation checker.)
-    # Makes integer varibale, i, 0.
+    # To allow other functions to find the localpart even if there are two @'s (was supposed to be mainly used by the
+    #  the quotation checker.) Makes integer varibale, i, 0.
     i = 0
     # Makes integer varibale, atnumber, 0.
     atnumber = 0

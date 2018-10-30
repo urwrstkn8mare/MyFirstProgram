@@ -1,4 +1,4 @@
-def DogsAndCats():
+def dogs_and_cats():
     global ageNew
     name = input('What is your name?')
     name = str(name)
@@ -17,7 +17,7 @@ def DogsAndCats():
         print('You did not choose an animal!')
         print('Do it again!')
         print('')
-        DogsAndCats()
+        dogs_and_cats()
     print('Hello ' + name + '!')
     print('I know you are ' + str(age) + ' years old!')
     print('But since you like ' + str(animal) + ' you are ' + str(ageNew) + ' years in ' + str(animal) + ' age!')
@@ -26,7 +26,7 @@ def DogsAndCats():
 
 
 def run():
-    DogsAndCats()
+    dogs_and_cats()
 
 
 if __name__ == '__main__':

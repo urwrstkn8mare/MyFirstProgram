@@ -1,8 +1,6 @@
 # Yr8CS1_Samit Shaikh_20180809
 # Binary Converter
 
-import os
-
 logb = input('LOGB (True/False): ').lower() in ['true', '1', 't', 'y', 'yes', 'yeah', 'yup', 'certainly',
                                                 'uh-huh']  # If userinput is in the list then variable logb is True
 print()  # Print new line
@@ -31,9 +29,9 @@ def log(text, validator, **opt):
                 print('LOG>>> ' + str(text) + ' <<< ' + str(namee))
         else:
             print('LOG>>> ' + str(text) + ' <<< ' + str(namee))
-    # If validator is True (normally this is used so when they run the program they can choose if they want logging or
-    # not.) then a string with the text and name used in it will be printed unless it is specified that the user enter's to continue.
-    # This can be specified in optional paramter, 'wait' with the value: True.
+    # If validator is True (normally this is used so when they run the program they can choose if they want logging
+    # or not.) then a string with the text and name used in it will be printed unless it is specified that the user
+    # enter's to continue. This can be specified in optional paramter, 'wait' with the value: True.
 
 
 def dec2bin(number):  # defines function as dec2bin
@@ -56,8 +54,10 @@ def dec2bin(number):  # defines function as dec2bin
             log(binumber, logb)  # logs variable binumber
             while number > 0:  # loops if variable number is less than 0
                 binumber = str(
-                    number % 2) + binumber  # sets variable binumber to the remainder of variable number divided by 2 added to the left of variable binumber as a string
-                number = number // 2  # sets variable number to variable number divided by 2 without remainders or in decimal form
+                    number % 2) + binumber  # sets variable binumber to the remainder of variable number divided by 2
+                #  added to the left of variable binumber as a string
+                number = number // 2  # sets variable number to variable number divided by 2 without remainders or in
+                #  decimal form
                 log(binumber, logb)  # logs variable binumber
                 log(number, logb)  # logs variable number
         if negative:  # checks if variable negative is true
@@ -91,20 +91,22 @@ def bin2dec(number):  # defines function as bin2dec
 
 def dec2asc(number):  # define function dec2ascii
     dec = int(number) - 32  # sets variable dec to variable number subtract 32 as an integer
-    asciiTable = ' !"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~'
-    # sets variable asciiTable to printable range of ascii characters in a string with placeholders on it's right to align the position of each character to its corresponding decimal value.
+    ascii_table = ' !"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~'
+    # sets variable asciiTable to printable range of ascii characters in a string with placeholders on it's right to
+    # align the position of each character to its corresponding decimal value.
     if 31 < dec + 32 < 127:
         pass  # checks if variable dec plus 32 is between 31 and 127
     else:
         print('!ERROR! Input not within printable range.')  # if returned false, print an error with reason
         exit()  # exit program
-    return asciiTable[
+    return ascii_table[
         dec]  # return the character in variable asciiTable which position is the value held in variable dec.
 
 
 def bin2asc(number):  # define function bin2ascii
     return dec2asc(bin2dec(
-        number))  # return the output of function dec2ascii which argument is the output of function bin2dec. Function bin2dec's argument is variable number
+        number))  # return the output of function dec2ascii which argument is the output of function bin2dec.
+    # Function bin2dec's argument is variable number
 
 
 def asc2dec(letter):  # define function ascii2dec
@@ -113,14 +115,16 @@ def asc2dec(letter):  # define function ascii2dec
     else:
         print('!ERROR! Input more than one letter (or less)')  # if returned false, print error
         exit()  # exit program
-    asciiTable = ' !"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~'
-    # sets variable asciiTable to printable range of ascii characters in a string with placeholders on it's right to align the position of each character to its corresponding decimal value.
-    return asciiTable.find(str(letter)) + 32
+    ascii_table = ' !"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~'
+    # sets variable asciiTable to printable range of ascii characters in a string with placeholders on it's right to
+    # align the position of each character to its corresponding decimal value.
+    return ascii_table.find(str(letter)) + 32
 
 
 def asc2bin(letter):  # defines function ascii2bin
     return dec2bin(asc2dec(
-        letter))  # return the output of function dec2bin which argument is the output of function ascii2dec. Function ascii2dec's argument is variable letter
+        letter))  # return the output of function dec2bin which argument is the output of function ascii2dec.
+    # Function ascii2dec's argument is variable letter
 
 
 def largest(a, b, c):  # defines function largest
@@ -136,7 +140,8 @@ def largest(a, b, c):  # defines function largest
     if two < c < one:  # checks if variable two is bigger than c and variable c is bigger than variable one
         three = two  # if returned true, variable three is given variable two
         two = c  # variable two is given variable c
-    elif two < one < c:  # else, checks if variable two is bigger than variable one and variable c is bigger than variable c
+    elif two < one < c:  # else, checks if variable two is bigger than variable one and variable c is bigger than
+        # variable c
         three = two  # variable three is given variable two
         two = one  # variable two is given variable one
         one = c  # variable one is given variable c
@@ -147,9 +152,11 @@ def largest(a, b, c):  # defines function largest
 
 def smallest(a, b, c):  # defines function smallest
     lrgfnc = largest(a, b,
-                     c)  # variable lrgfnc is given the ouput of function largest which arguments are variables a, b and c
+                     c)  # variable lrgfnc is given the ouput of function largest which arguments are variables a,
+    # b and c
     return [lrgfnc[2], lrgfnc[1], lrgfnc[
-        0]]  # returns list containing the last of list variable lrgfnc, the second of variable lrgfnc and the first of variable lrgfnc
+        0]]  # returns list containing the last of list variable lrgfnc, the second of variable lrgfnc and the first
+    # of variable lrgfnc
 
 
 def writefileval(textfilename, mystring):
@@ -167,7 +174,8 @@ def readfileval(textfilename):
             """to remove whitespace characters like `\n` at the end of each line"""
             content = [xx.strip() for xx in content]
     except FileNotFoundError:
-        error = 'ERROR! The file you gave was not found or there was a problem with the program. (the file must be in the same directory as this program.)'
+        error = 'ERROR! The file you gave was not found or there was a problem with the program. ' \
+                '(the file must be in the same directory as this program.) '
         print('\n' + error)
         input()
         exit()
@@ -203,22 +211,28 @@ def run():
         try:  # tries following code
             if cmd == 'dec2bin':  # if variable cmd is 'dec2bin'
                 print(dec2bin(value[
-                                  0]))  # then prints output of function dec2bin which argument is the first of list variable value as an integer
+                                  0]))  # then prints output of function dec2bin which argument is the first of list
+                # variable value as an integer
             elif cmd == 'bin2dec':  # if above is false then if variable cmd is 'bin2dec'
                 print(bin2dec(value[
-                                  0]))  # then prints output of function bin2dec which argument is the first of list variable value as an integer
+                                  0]))  # then prints output of function bin2dec which argument is the first of list
+                # variable value as an integer
             elif cmd == 'dec2asc':  # if above is false then if variable cmd is 'dec2ascii'
                 print(dec2asc(value[
-                                  0]))  # then prints output of function dec2ascii which argument is the first of list variable value as an integer
+                                  0]))  # then prints output of function dec2ascii which argument is the first of
+                # list variable value as an integer
             elif cmd == 'bin2asc':  # if above is false then if variable cmd is 'bin2ascii'
                 print(bin2asc(value[
-                                  0]))  # then prints output of function bin2ascii which argument is the first of list variable value
+                                  0]))  # then prints output of function bin2ascii which argument is the first of
+                # list variable value
             elif cmd == 'asc2dec':  # if above is false then if variable cmd is 'ascii2dec'
                 print(asc2dec(value[
-                                  0]))  # then prints output of function ascii2dec which argument is the first of list variable value
+                                  0]))  # then prints output of function ascii2dec which argument is the first of
+                # list variable value
             elif cmd == 'asc2bin':  # if above is false then if variable cmd is 'ascii2bin'
                 print(asc2bin(value[
-                                  0]))  # then prints output of function ascii2bin which argument is the first of list variable value
+                                  0]))  # then prints output of function ascii2bin which argument is the first of
+                # list variable value
             elif cmd == 'largest':
                 print(largest(value[0], value[1], value[2]))
             elif cmd == 'smallest':

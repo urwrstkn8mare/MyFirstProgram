@@ -21,7 +21,8 @@ def crct(file):
             strt = False
         if strt or not ', '.join(
                 data[
-                    0]) == 'GNAME, SNAME, ROLE, TRATE, SUPER, HLTH, MON, TUE, WED, THU, FRI, SAT, SUN, LASTCHECKIN, LASTCHECKOUT, KEY':
+                    0]) == 'GNAME, SNAME, ROLE, TRATE, SUPER, HLTH, MON, TUE, WED, THU, FRI, SAT, SUN, LASTCHECKIN, ' \
+                           'LASTCHECKOUT, KEY':
             return False
         return True
     else:

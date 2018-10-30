@@ -69,7 +69,8 @@ def parse(string):
                 return error(name, '03_nooperators', 'No of the eligble operaters were found in the string.')
             else:
                 return error(name, '04_invalidstr',
-                             'The string does not start with an integer or have the second last character as an integer.')
+                             'The string does not start with an integer or have the second last character as an '
+                             'integer.')
         else:
             return error(name, '05_noequalsign', 'There is no ending equal sign!')
 

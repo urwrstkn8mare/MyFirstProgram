@@ -21,7 +21,7 @@ def checkmoduleguess(guessed, randomised, triess):
     return guesstriesss
 
 
-def GuessTheNumber():
+def guess_the_number():
     global guess
     print('Welcome to the Guess the Number Game!')
     print('Can you guess the number I randomly chose between 1 and 100??')
@@ -66,7 +66,7 @@ def GuessTheNumber():
 
 
 def run():
-    GuessTheNumber()
+    guess_the_number()
 
 
 if __name__ == '__main__':

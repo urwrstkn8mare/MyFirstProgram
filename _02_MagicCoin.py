@@ -5,7 +5,8 @@ def run():
     inputvar = input('You are digging in your Grandparent’s backyard and uncover a bag of how many gold coins?')
     print('Ok. So you dug up ' + inputvar + ' coins.')
     inputvar2 = input('The next day you sneak into your Grandfathers shed and stick the coins inside his steam-powered '
-                      'replicating invention. You hear a whiz and a pop and a few hours later, out shoots how many coins?')
+                      'replicating invention. You hear a whiz and a pop and a few hours later, out shoots how many '
+                      'coins?')
     inputvar3 = input('And how many days until you check your treasure chest again?')
     newnumber = int(inputvar) + int(inputvar2) * int(inputvar3)
     newnumber = str(newnumber)
@@ -27,7 +28,8 @@ def run():
                                                                                 "week. And on top of that, "
                                                                                 "your Grandfather being a constant "
                                                                                 "tinkerer has fiddled with the "
-                                                                                "steam-powered replicator and now it only "
+                                                                                "steam-powered replicator and now it "
+                                                                                "only "
                                                                                 "produces 5 coins per week.")
     newnumber = int(inputvar) + 5 * int(inputvar3)
     newnumber = int(newnumber) - 52 * 2

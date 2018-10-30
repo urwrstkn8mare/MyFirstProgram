@@ -1,15 +1,15 @@
 import random
 
 
-def endStory():
+def end_story():
     print('The End')
     print('')
     print('')
-    RestartStory = input('Do you want to restart?')
-    if RestartStory == 'yes':
+    restart_story = input('Do you want to restart?')
+    if restart_story == 'yes':
         print('')
         story()
-    elif RestartStory == 'no':
+    elif restart_story == 'no':
         print('The Story Project has ended!')
         print('')
     else:
@@ -59,18 +59,18 @@ def story():
             print('"They may not have known?" you thought.')
             print()
         elif ageNumber < 18:
-            betweenAge = 30 - int(ageNumber)
-            betweenAge = str(betweenAge)
+            between_age = 30 - int(ageNumber)
+            between_age = str(between_age)
             print(
                 'You urge mom and dad to vote to destroy North Korea. They say they do not have a say. You do not '
-                'believe that! In ' + betweenAge + ' years you turn 30. Then you become the youngest president ever! '
-                                                   'The first move you make as president is to completely wipe North '
-                                                   'Korea off the map! South Korea is now an island.')
+                'believe that! In ' + between_age + ' years you turn 30. Then you become the youngest president ever! '
+                                                    'The first move you make as president is to completely wipe North '
+                                                    'Korea off the map! South Korea is now an island.')
             print(
                 'After that. You face many assassination attempts. You have OP Secret Service so you dodge it. Then '
                 'after years of backlash you lead a norm life.')
             print('')
-            endStory()
+            end_story()
         else:
             print('You did not choose an age. Please start again...')
             story()
@@ -89,7 +89,7 @@ def story():
                 if kill == 'no':
                     print('You decided to not kill Trump. Too bad, he finds you and kills you. You lived a ' + ageLong +
                           ' ' + ' life!')
-                    endStory()
+                    end_story()
                 elif kill == 'yes':
                     print('You kill Trump with a ' + weapon + ' . After you do not no what happens yet...')
                     print('')
@@ -103,13 +103,13 @@ def story():
                         if president == 1:
                             print('Bye! You lived a ' + ageLong + ' life!')
                             print('')
-                            endStory()
+                            end_story()
                         elif president == 2:
                             print(
                                 'You were a normal president. Nothing happended. The story would be boring so it '
                                 'shall end now.')
                             print('')
-                            endStory()
+                            end_story()
                         elif president == 3:
                             p2 = input(
                                 'You took over the world. The world was at your command. Then the aliens came... Part '
@@ -121,7 +121,7 @@ def story():
                         else:
                             print('You did not choose anything. Too bad. Story is going to end.')
                             print('')
-                            endStory()
+                            end_story()
                             return
                     else:
                         print(
@@ -131,7 +131,7 @@ def story():
                             'In space you met aliens. The aliens played a game of chess with you. Then they cut of '
                             'every extruding limb of your body and blended it in a nutri-bullet.')
                         print('')
-                        endStory()
+                        end_story()
                 elif kill == 'later':
                     print('Too late. He finds you and kills you. You lived a ' + ageLong + ' life!')
                 else:
@@ -145,7 +145,7 @@ def story():
                     weapon + ' and shoot all your body parts expect your heart and brain. While you blead to death I '
                              'let you watch ' + game + '!')
                 print('')
-                endStory()
+                end_story()
             else:
                 print('You did not choose an appropriate year, please start again...')
                 story()
@@ -158,19 +158,19 @@ def story():
                     'after not knowing anything, the island get nuked by America. Bye. you lived a ' + ageLong +
                     ' life.')
                 print('')
-                endStory()
+                end_story()
             elif setting < 2018:
                 print(
                     'You are too young to understand but youre country is bad. You should abandon it now!. The story '
                     'shall not continue until you leave!')
                 print('')
-                endStory()
+                end_story()
             elif setting == 2018:
                 print(
                     'You are too young to understand but youre country is bad. You should abandon it now!. The story '
                     'shall not continue until you leave!')
                 print('')
-                endStory()
+                end_story()
             else:
                 print('You did not choose a appropriate year, please start again...')
                 story()

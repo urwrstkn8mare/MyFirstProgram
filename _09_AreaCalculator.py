@@ -1,7 +1,7 @@
 # PRG9
 
 
-def AreaCalculator(shape, width, height, pivalue):
+def area_calculator(shape, width, height, pivalue):
     global area
     pi = pivalue
     if shape == 'rectangle':
@@ -22,7 +22,7 @@ def run():
         print('What shape would you like to find the area of? (triangle/rectangle/circle)')
         shapequery = input('-> ')
         print('')
-        if shapequery == 'rectangle' or shapequery == 'Rectangle' or shapequery == 'triangle' or shapequery == 'Triangle':
+        if shapequery.lower() == 'rectangle' or shapequery.lower() == 'triangle':
             shapequery = shapequery.lower()
             print('What is the width of the ' + shapequery + '?')
             widthquery = int(input('-> '))
@@ -49,7 +49,7 @@ def run():
             print('You did not submit a shape to get the area of!')
             print('Ending!')
             break
-        answer = AreaCalculator(shapequery, widthquery, heightquery, pivaluequery)
+        answer = area_calculator(shapequery, widthquery, heightquery, pivaluequery)
         print('The area of your ' + shapequery + ' is ' + str(answer) + '!')
         print('Bye!!')
         break

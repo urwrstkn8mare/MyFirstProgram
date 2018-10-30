@@ -1,4 +1,4 @@
-def FCRPriceCalculator():
+def fcr_price_calculator():
     name = input('What is your name?')
     age: int = int(input('What is your age, ' + name + '?'))
     if age >= 16 <= 65:
@@ -10,7 +10,7 @@ def FCRPriceCalculator():
 
 
 def run():
-    FCRPriceCalculator()
+    fcr_price_calculator()
 
 
 if __name__ == '__main__':

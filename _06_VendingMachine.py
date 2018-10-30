@@ -1,4 +1,4 @@
-def vendingMachine(newitem, newitemconfirmation):
+def vending_machine(newitem, newitemconfirmation):
     print('Welcome to the advanced Vending Machine. I am the first generation of advanced AI called Bob. I have been '
           'put into this vending machine accidentally.')
     print('')
@@ -25,22 +25,22 @@ def vendingMachine(newitem, newitemconfirmation):
             print('Sorry, you have not chosen correctly or there may have been an error.')
             print('Restarting...')
             print('')
-            vendingMachine('N/A', 2)
+            vending_machine('N/A', 2)
         else:
             if request == 1:
                 print('Restarting...')
                 print('')
-                vendingMachine('N/A', 2)
+                vending_machine('N/A', 2)
             elif request == 2:
-                addItem = input('Input the item you wish to add: ')
+                add_item = input('Input the item you wish to add: ')
                 print('Restarting with new values...')
                 print('')
-                vendingMachine(addItem, 1)
+                vending_machine(add_item, 1)
             else:
                 print('Sorry, you have not chosen correctly or there may have been an error.')
                 print('Restarting...')
                 print('')
-                vendingMachine('N/A', 2)
+                vending_machine('N/A', 2)
     else:
         if request == 1:
             print('Hope you like it! (who likes raw chicken?)')
@@ -61,14 +61,14 @@ def vendingMachine(newitem, newitemconfirmation):
         elif request == 8 and newitemconfirmation == 1:
             print('So you chose ' + newitem + '! Hopefully its good! (It should be, you made it yourself.)')
         else:
-            vendingMachine('N/A', 2)
+            vending_machine('N/A', 2)
     print('Thank you for using this vending machine!')
     print('')
     return
 
 
 def run():
-    vendingMachine('N/A', 2)
+    vending_machine('N/A', 2)
 
 
 if __name__ == '__main__':

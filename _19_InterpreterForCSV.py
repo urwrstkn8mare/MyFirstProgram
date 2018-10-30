@@ -21,9 +21,9 @@ def log(text, validator, **opt):
                 print('LOG>>> ' + str(text) + ' <<< ' + str(namee))
         else:
             print('LOG>>> ' + str(text) + ' <<< ' + str(namee))
-    # If validator is True (normally this is used so when they run the program they can choose if they want logging or
-    # not.) then a string with the text and name used in it will be printed unless it is specified that the user enter's to continue.
-    # This can be specified in optional paramter, 'wait' with the value: True.
+    # If validator is True (normally this is used so when they run the program they can choose if they want logging
+    # or not.) then a string with the text and name used in it will be printed unless it is specified that the user
+    # enter's to continue. This can be specified in optional paramter, 'wait' with the value: True.
 
 
 def error(nameee, err, string):
@@ -82,18 +82,23 @@ def read_csv(filename, header):  # Define function read_csv with parameters: fil
                             len(xx)):  # While variable c is in the range of the number of items in list variable xx...
                         log('LOOP y', logr, name=lognm)  # ...log 'LOOP Y' if logr is True.
                         for y in range(len(
-                                xx)):  # While variable y is in the range of the number of items in the list variable xx...
+                                xx)):  # While variable y is in the range of the number of items in the list variable
+                            #  xx...
                             z = ','.join(xx[
-                                         c:y + 1])  # ...join variable c to variable y plus 1 of list variable xx with commas and store it in variable z.
+                                         c:y + 1])  # ...join variable c to variable y plus 1 of list variable xx
+                            # with commas and store it in variable z.
                             z = z.strip()  # Remove whitespace (eg. ' ', '\n') from variable z.
                             log(z, logr, name='z' + lognm)  # Log variable z if logr is True and with the name: 'z'.
                             log(str(z.startswith('\"')), logr,
-                                name='z.startswith(\'\"\')' + lognm)  # Log True if z starts with '"' if logr is true and with the name: 'z.startswith('"')'.
+                                name='z.startswith(\'\"\')' + lognm)  # Log True if z starts with '"' if logr is true
+                            #  and with the name: 'z.startswith('"')'.
                             log(str(z.endswith('\"')), logr,
-                                name='z.endswith(\'\"\')' + lognm)  # Log True if z ends with '"' if logr is true and with the name: 'z.endswith('"')'.
+                                name='z.endswith(\'\"\')' + lognm)  # Log True if z ends with '"' if logr is true and
+                            #  with the name: 'z.endswith('"')'.
                             if z.startswith('\"') and z.endswith('\"'):  # If z starts with and ends with '""' then...
                                 log(str([c, y + 1]), logr,
-                                    name='[c, y + 1]' + lognm)  # ...log list containing c and y plus 1 if logr is True and with the name: '[c, y + 1]'.
+                                    name='[c, y + 1]' + lognm)  # ...log list containing c and y plus 1 if logr is
+                                # True and with the name: '[c, y + 1]'.
                                 b.append([c, y + 1])  # Append list containing c and y plus 1 to list variable b.
                     b.append([-1, -1])  # Append list containing negative 1 and negative 1 to list variabel b.
                     log(str(b), logr, name='b' + lognm)  # Log variable b if logr is True with the name: 'b'.
@@ -101,13 +106,15 @@ def read_csv(filename, header):  # Define function read_csv with parameters: fil
                     m = 0  # Store zero in variable m.
                     u = 0  # Store zero in variable u.
                     log(len(xx), logr,
-                        name='len(xx)' + lognm)  # Log the number of items in xx if logr is True with the name: 'len(xx)'.
+                        name='len(xx)' + lognm)  # Log the number of items in xx if logr is True with the name: 'len(
+                    # xx)'.
                     log('LOOP U', logr, name=lognm)  # Log 'LOOP U' if logr is True.
                     while u < len(xx):  # While u is under the number of items in xx...
                         if u == b[m][0]:  # ...,if u is the same as 0 of m of b then...
                             o = ','.join(
                                 xx[
-                                u:b[m][1]])  # ...join u to 1 of m of b of with commas and then store it in variable o.
+                                u:b[m][1]])  # ...join u to 1 of m of b of with commas and then store it in
+                            # variable o.
                             o = o.strip()[1:-1]
                             log(o, logr,
                                 name='o (True)' + lognm)  # Log variable o if logr is True with the name: 'o (True)'.
@@ -176,7 +183,8 @@ def find_csv_record(filename, key_value, **opt):
         keyy = opt['key']
     else:
         keyy = 'key'
-    # If there is the optional parameter, 'key', is present then store the value of the parameter in variable keyy otherwise store 'key'.
+    # If there is the optional parameter, 'key', is present then store the value of the parameter in variable keyy
+    # otherwise store 'key'.
     for l in range(len(csvfile)):
         try:
             if csvfile[l][keyy] == str(key_value):
@@ -216,15 +224,18 @@ def write_csv_record(filename, inside):
                             else:
                                 tmp.append(str(inside[d][n]))  # appends string form of n of d of inside
                         f.write(', '.join(
-                            tmp) + '\n')  # joins together items in tmp with comma and writes it to the file. Adds a new line after.
+                            tmp) + '\n')  # joins together items in tmp with comma and writes it to the file. Adds a
+                        # new line after.
                     else:  # else returns error
                         return error(name,
                                      '08_NUMBEROFLINES',
-                                     'Lines do not have same number of fields. (The file may be incomplete or corrupted.)')
+                                     'Lines do not have same number of fields. (The file may be incomplete or '
+                                     'corrupted.)')
                 else:  # else returns error
                     return error(name,
                                  '09_NOLIST',
-                                 'Parameters other than filename should be lists. (The file may be incomplete or corrupted.)')
+                                 'Parameters other than filename should be lists. (The file may be incomplete or '
+                                 'corrupted.)')
         except IndexError:  # if there is an index error closes file and returns error
             f.close()
             return error(name, '10_BADPARAM',
@@ -235,7 +246,8 @@ def write_csv_record(filename, inside):
 def update_csv_record(filename, header, row, field, new_value):
     # This function updates a specific value in the csv file with new value sepcified in new_value.
     csvfile = read_csv(filename, header)
-    # Call read_csv with its filename parameter as this own function's filename paramter and header parameter with this own functions's parameter, header.
+    # Call read_csv with its filename parameter as this own function's filename paramter and header parameter with
+    # this own functions's parameter, header.
     if not isinstance(csvfile, list):
         if csvfile.startswith('!ERROR'):
             return csvfile
@@ -269,7 +281,8 @@ def append_csv_record(filename, listt):
         csvfile = read_csv(filename, False)  # reads filename with no headers and outputs into csvfile
         try:
             if len(listt) == len(csvfile[
-                                     0]):  # checks if the number of items in listt is the same as the number of items in 0 of csvfile.
+                                     0]):  # checks if the number of items in listt is the same as the number of
+                # items in 0 of csvfile.
                 with open(filename, 'a') as f:  # opens filename
                     tmp = []
                     for n in range(len(listt)):
@@ -282,7 +295,8 @@ def append_csv_record(filename, listt):
             else:  # else returns error
                 return error(name,
                              '12_BADNEWROW',
-                             'CSV file will not be formatted correctly with this new row. (The number of fields in input '
+                             'CSV file will not be formatted correctly with this new row. (The number of fields in '
+                             'input '
                              'is not the same as file inputted)')
         except IndexError:
             if csvfile.startswith('!ERROR'):
@@ -298,7 +312,8 @@ def insert_csv_record(filename, listt, index):
         data = read_csv(filename, False)  # reads file and outputs into data
         try:
             if len(listt) == len(data[
-                                     0]):  # checks if the number of items in listt is the same as the number of items in 0 of data.
+                                     0]):  # checks if the number of items in listt is the same as the number of
+                # items in 0 of data.
                 listdata = []  # creates empty list, listdata
                 for i in range(len(data)):  # while i is in the number of items in data
                     tmpitem = []  # creates emptyl list, tmpitem
@@ -315,14 +330,16 @@ def insert_csv_record(filename, listt, index):
                 for b in range(len(listdata)):  # while b is in the number of items in listdata
                     if not len(listdata[b]) == len(
                             listdata[0 - (len(listdata) - b)]):  # checks if the number of items in b of
-                        # listdata is not equal to the number of items in (0 - len(listdata) - b) of listdata). Also returns error after
+                        # listdata is not equal to the number of items in (0 - len(listdata) - b) of listdata). Also
+                        # returns error after
                         return error(name, '14_INCORRECT',
                                      'New line does not have the same amount of fields as other lines.')
                 write_csv_record(filename, listdata)  # if no errors are returned then overwrites listdata to filename
             else:  # else returns error
                 return error(name,
                              '12_BADNEWROW',
-                             'CSV file will not be formatted correctly with this new row. (The number of fields in input '
+                             'CSV file will not be formatted correctly with this new row. (The number of fields in '
+                             'input '
                              'is not the same as file inputted)')
         except IndexError:
             if data.startswith('!ERROR'):

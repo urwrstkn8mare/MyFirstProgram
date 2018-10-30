@@ -1,35 +1,35 @@
-from _06_VendingMachine import vendingMachine
+from _06_VendingMachine import vending_machine
 
 
-def KebabShopRequest():
+def kebab_shop_request():
     print('\nWelcome to the Kebab Shop!')
     order = ['']
     ordertotal = 0
-    NumberOfPeople: int = int(input('How many people will I be serving today?'))
-    NumberOfPeople = NumberOfPeople + 1
+    number_of_people: int = int(input('How many people will I be serving today?'))
+    number_of_people = number_of_people + 1
     print('')
     print('Ok. Rememeber that Lamb is 15 Dollars and Chicken is 10 Dollars')
-    OrderNumber = 1
-    while NumberOfPeople > OrderNumber > 0:
-        orderRequest = str(
-            input('So you are order number ' + str(OrderNumber) + '. Would you like Lamb Kebab or Chicken Kebab?'))
-        if orderRequest == 'lamb':
+    order_number = 1
+    while number_of_people > order_number > 0:
+        order_request = str(
+            input('So you are order number ' + str(order_number) + '. Would you like Lamb Kebab or Chicken Kebab?'))
+        if order_request == 'lamb':
             order.append('lamb')
             ordertotal = ordertotal + 15
-        elif orderRequest == 'chicken':
+        elif order_request == 'chicken':
             order.append('chicken')
             ordertotal = ordertotal + 10
         else:
             print('You did not give an appropriate answer, try again!')
             print('NOTE: you must write either lamb or chicken. No caps just what was just written to you.')
-            KebabShopRequest()
+            kebab_shop_request()
         print('')
-        OrderNumber = OrderNumber + 1
+        order_number = order_number + 1
     print('Here is youre order summary: ')
-    OrderNumber = 1
-    while NumberOfPeople > OrderNumber > 0:
-        print('Order ' + str(OrderNumber) + ': ' + order[OrderNumber])
-        OrderNumber = OrderNumber + 1
+    order_number = 1
+    while number_of_people > order_number > 0:
+        print('Order ' + str(order_number) + ': ' + order[order_number])
+        order_number = order_number + 1
     print('')
     print('Order Total: $' + str(ordertotal))
     print('')
@@ -38,9 +38,9 @@ def KebabShopRequest():
     if drinksconfirm == 'yes':
         drinks = input('Coke ($2 each) or Pepsi? ($1.50) ')
         if drinks == 'coke':
-            drinkprice = 2 * (NumberOfPeople - 1)
+            drinkprice = 2 * (number_of_people - 1)
         elif drinks == 'pepsi':
-            drinkprice = 1.5 * (NumberOfPeople - 1)
+            drinkprice = 1.5 * (number_of_people - 1)
         else:
             drinkprice = 0
             print('You did not give appropriate answer. You will not have ordered anything.')
@@ -54,7 +54,7 @@ def KebabShopRequest():
     vendingquery = input('Do you want to use the vedning machine? ')
     if vendingquery == 'yes':
         print('')
-        vendingMachine('N/A', 2)
+        vending_machine('N/A', 2)
     else:
         pass
     print('Ok. Have a great day!')
@@ -62,7 +62,7 @@ def KebabShopRequest():
 
 
 def run():
-    KebabShopRequest()
+    kebab_shop_request()
 
 
 if __name__ == '__main__':

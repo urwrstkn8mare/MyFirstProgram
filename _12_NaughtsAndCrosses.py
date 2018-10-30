@@ -1,5 +1,6 @@
 # Naughts and Crosses
 
+
 def checkwin(box, player, turn):
     something = True
 
@@ -63,9 +64,15 @@ def game(playername):
         choiceinput = int(input('-> '))
         if 10 > choiceinput > 0:
             if boxes[choiceinput] == 'O' or boxes[choiceinput] == 'X':
-                if boxes[1] == '1' or boxes[2] == '2' or boxes[3] == '3' or boxes[4] == '4' or boxes[5] == '5' or boxes[
-                        6] == '6' or boxes[7] == '7' or boxes[8] == '8' or boxes[9] == '9':
+                if boxes[1] in '1' or boxes[2] in '2' or boxes[3] in '3' or boxes[4] in '4' or boxes[5] in '5' \
+                        or boxes[6] in '6' or boxes[7] in '7' or boxes[8] in '8' or boxes[9] in '9':
                     print('Sorry. This has already been taken. The turn is going to the other person.')
+                    if playerturnname == 'O':
+                        playerturnname = 'X'
+                        playerturn = 2
+                    elif playerturnname == 'X':
+                        playerturnname = 'O'
+                        playerturn = 1
                 else:
                     print('Every box has filled. Game ended with none winning. :(')
                     print('Goodbye!')

@@ -1,5 +1,7 @@
-import sys, os, random
-import string, csv
+import csv
+import os
+import random
+import sys
 
 
 def wait_key():

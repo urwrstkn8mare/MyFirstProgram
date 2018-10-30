@@ -4,11 +4,11 @@
 def run():
     print('Hi. This is my first python script')
     print('')
-    MyNumber = input('Please put in a number')
+    my_number = input('Please put in a number')
     print('')
-    MyNumber2 = input('Please put in second number')
+    my_number2 = input('Please put in second number')
     print('')
-    new = int(MyNumber) * int(MyNumber2)
+    new = int(my_number) * int(my_number2)
     print('The product of your two numbers are: ' + str(new))
     print('')
 
