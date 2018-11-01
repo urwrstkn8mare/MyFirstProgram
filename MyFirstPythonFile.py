@@ -24,7 +24,7 @@ def cmd(command):
     command = str(command).strip()
     cmds = {
         'print': cmdprint,
-        'time': thenowtime,
+        'time': lambda dud: print(datetime.datetime.now()),
         'prg': lambda number: prg(int(number[0])),
         'newprg': newproject,
         'prgs': lambda duddd: prgs(),
@@ -34,7 +34,7 @@ def cmd(command):
         'round': lambda params: print(round(float(params[0]), int(params[1]))),
         'parse': lambda param: print(parse(str(param[0]))),
         'sort': sort,
-        'filesort': fs
+        'filesort': lambda filename: filesort(filename[0])
     }
     ran = False
     if '-' in command:

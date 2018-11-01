@@ -11,13 +11,6 @@ from _22_SortString import filesort, quicksort
 
 # commands
 
-def thenowtime(dud):
-    print(datetime.datetime.now())
-
-
-def fs(nme):
-    filesort(nme[0])
-
 
 def cmdprint(order):
     order = str(order[0])
@@ -28,7 +21,7 @@ def sort(array):
     if len(array) == 1:
         print(quicksort(array[0]))
     else:
-        print(quicksort(array))
+        print(', '.join(quicksort(array)))
 
 
 def newproject(title):

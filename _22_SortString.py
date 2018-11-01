@@ -31,7 +31,7 @@ def log(text, validator, **opt):
     # enter's to continue. This can be specified in optional paramter, 'wait' with the value: True.
 
 
-def error(nameee, err, string):
+def error(err, string, nameee):
     # This function will return the error name that programs can use and print a error message in the console.
     print('\n!ERROR_' + err.upper() + '! ' + string + ' [' + nameee + ']\n')
     return '!ERROR_' + err.upper() + '!'
@@ -114,11 +114,12 @@ def sort3(string):
 def filesort(filename, **settings):
     filename = str(filename).strip()
     default = {
-        'parse': True,
+        'parse': False,
         'forcestr': False,
         'newfile': True,
         'newfilename': '',
-        'outputverify': True
+        'outputverify': True,
+        'outputvalues': False
     }
     settingnames = ','.join(default).split(',')
     boolexceptions = ['newfilename']
@@ -129,9 +130,13 @@ def filesort(filename, **settings):
             settings[settingnames[x]] = str(settings[settingnames[x]]).lower() in ['true', '1', 't', 'y', 'yes', 'yeah',
                                                                                    'yup', 'certainly',
                                                                                    'uh-huh']
-    with open(str(filename)) as fr:
-        filecontent = fr.readlines()
-        fr.close()
+    try:
+        with open(str(filename)) as fr:
+            filecontent = fr.readlines()
+            originalcontent = [str(xx).strip() for xx in filecontent]
+            fr.close()
+    except FileNotFoundError:
+        return error('04_filenotfound', str('The file [' + str(filename) + '] was not found.'), name)
     if settings['forcestr']:
         flagstring = True
     else:
@@ -155,9 +160,24 @@ def filesort(filename, **settings):
         else:
             filecontent = [float(xx) for xx in filecontent]
     filecontent = quicksort(filecontent)
-    filecontent = [str(xx) for xx in filecontent]
+    if not settings['outputvalues']:
+        tempcontent = []
+        for i in range(len(filecontent)):
+            for b in range(len(originalcontent)):
+                if flagstring:
+                    if filecontent[i] == str(originalcontent[b]):
+                        tempcontent.append(originalcontent[b])
+                else:
+                    if settings['parse']:
+                        if filecontent[i] == parse(originalcontent[b]):
+                            tempcontent.append(originalcontent[b])
+                    else:
+                        if filecontent[i] == float(originalcontent[b]):
+                            tempcontent.append(originalcontent[b])
+    else:
+        tempcontent = [str(xx).strip() for xx in filecontent]
     if settings['outputverify']:
-        print('\nNew Sorted File: \n' + '\n'.join(filecontent) + '\n[WRITE] OR [CANCEL]')
+        print('\nNew Sorted File: \n    ' + '\n    '.join(filecontent) + '\n[WRITE] OR [CANCEL]')
         verify = str(input('       ')).lower() in ['write', 'w']
     else:
         print()
