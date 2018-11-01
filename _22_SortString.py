@@ -137,10 +137,7 @@ def filesort(filename, **settings):
             fr.close()
     except FileNotFoundError:
         return error('04_filenotfound', str('The file [' + str(filename) + '] was not found.'), name)
-    if settings['forcestr']:
-        flagstring = True
-    else:
-        flagstring = False
+    flagstring = settings['forcestr']
     for i in range(len(filecontent)):
         filecontent[i] = str(filecontent[i]).strip()
         if not flagstring:
@@ -153,29 +150,22 @@ def filesort(filename, **settings):
                 except ValueError:
                     flagstring = True
     if flagstring:
-        filecontent = [str(xx).strip() for xx in filecontent]
+        typee = lambda value: str(value).strip()
     else:
         if settings['parse']:
-            filecontent = [parse(xx) for xx in filecontent]
+            typee = lambda value: parse(value)
         else:
-            filecontent = [float(xx) for xx in filecontent]
-    filecontent = quicksort(filecontent)
+            typee = lambda value: float(value)
+    filecontent = quicksort([typee(xx) for xx in filecontent])
     if not settings['outputvalues']:
         tempcontent = []
         for i in range(len(filecontent)):
             for b in range(len(originalcontent)):
-                if flagstring:
-                    if filecontent[i] == str(originalcontent[b]):
-                        tempcontent.append(originalcontent[b])
-                else:
-                    if settings['parse']:
-                        if filecontent[i] == parse(originalcontent[b]):
-                            tempcontent.append(originalcontent[b])
-                    else:
-                        if filecontent[i] == float(originalcontent[b]):
-                            tempcontent.append(originalcontent[b])
+                if filecontent[i] == typee(originalcontent[b]):
+                    tempcontent.append(originalcontent[b])
+        filecontent = tempcontent
     else:
-        tempcontent = [str(xx).strip() for xx in filecontent]
+        filecontent = [str(xx).strip() for xx in filecontent]
     if settings['outputverify']:
         print('\nNew Sorted File: \n    ' + '\n    '.join(filecontent) + '\n[WRITE] OR [CANCEL]')
         verify = str(input('       ')).lower() in ['write', 'w']
@@ -196,9 +186,8 @@ def filesort(filename, **settings):
         f.close()
         if settings['outputverify']:
             print('New Sorted File written to: ' + str(newfilename))
-    else:
-        if settings['outputverify']:
-            print('Cancelled, not written to new file.')
+    elif settings['outputverify']:
+        print('Cancelled, not written to new file.')
 
 
 def run():

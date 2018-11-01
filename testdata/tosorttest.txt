@@ -7,15 +7,6 @@
 4
 423
 234
-asdfadsf
-hello
-wee
-wow
-cool
-kiwi
-zoo
-ooz
-fooz
 7.0
 23.0
 326
@@ -23,8 +14,6 @@ fooz
 36.0
 234
 432
-4+23=
-32**12=
 423
 45.0
 53
