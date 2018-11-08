@@ -1,3 +1,9 @@
+# Title: Text2Maths
+# Created by: Samit Shaikh
+# Created: N/A
+# Date of Last Revision: 2018-11-08
+# Purpose: To parse text and output a number.
+
 from _15_BinaryConverterAndStuff import *
 from _19_InterpreterForCSV import error
 import os

@@ -24,17 +24,21 @@ def sort(array):
         print(', '.join(quicksort(array)))
 
 
-def newproject(title):
-    title = str(title[0])
-    template = '#Created ' + str(datetime.datetime.now()) + '\n#' + title + '\n\n\ndef run():\n    \"\"' \
-                                                                            '\"\n    Mainline code goes in the' \
-                                                                            ' below, any functions, imports or' \
-                                                                            ' global variables can go outside ' \
-                                                                            'as long as\n    this is the code ' \
-                                                                            'that is meant to run.\n    \"\"\"' \
-                                                                            '\n\n# Ignore below this line.\n\n\nif' \
-                                                                            ' __name__ == \'__main__\':\n    r' \
-                                                                            'un()\n'
+def newproject(params):
+    title = str(params[0])
+    name = str(params[1])
+    purpose = str(params[2])
+    template = '# Title: ' + str(title) + '\n# Created by: ' + name + '\n# Created: ' + str(datetime.datetime.now()) + \
+               '\n# Date of Last Revision: ' + str(datetime.datetime.now()) + '\n# Purpose: ' + str(purpose) + \
+               '\n\n\ndef run():\n    \"\"' \
+               '\"\n    Mainline code goes in the' \
+               ' below, any functions, imports or' \
+               ' global variables can go outside ' \
+               'as long as\n    this is the code ' \
+               'that is meant to run.\n    \"\"\"' \
+               '\n\n# Ignore below this line.\n\n\nif' \
+               ' __name__ == \'__main__\':\n    r' \
+               'un()\n'
     z = 0
     while True:
         path = os.path.abspath(os.path.dirname(sys.argv[0])) + '/'
@@ -46,6 +50,7 @@ def newproject(title):
             z += 1
     with open('_' + "{0:0=2d}".format(z) + '_' + title + '.py', 'w+') as f:
         f.write(template)
+    print('File [' + str('_' + "{0:0=2d}".format(z) + '_' + title + '.py') + '] Created')
     f.close()
 
 

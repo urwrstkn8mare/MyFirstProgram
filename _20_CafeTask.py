@@ -1,5 +1,10 @@
-import datetime
+# Title: CafeTask
+# Created by: Samit Shaikh
+# Created: N/A
+# Date of Last Revision: 2018-11-08
+# Purpose: To make a working interface for a cafe manager.
 
+import datetime
 from _19_InterpreterForCSV import *
 
 nme = os.path.realpath(__file__)
@@ -71,7 +76,7 @@ def create(gn, sn, storage):
 def checkin(gn, sn, storage):
     test1 = find_csv_record(storage, gn, key='GNAME')
     test2 = find_csv_record(storage, sn, key='SNAME')
-    if test1 == test2 and not test1 is None and not test2 is None:
+    if (test1 == test2) and (test1 is not None) and (test2 is not None):
         sett = find_csv_record(storage, gn, key='GNAME')
         now = str(datetime.datetime.now())
         update_csv_record(storage, True, int(sett['KEY']), 'LASTCHECKIN', now)
@@ -83,7 +88,7 @@ def checkin(gn, sn, storage):
 def checkout(gn, sn, storage):
     test1 = find_csv_record(storage, gn, key='GNAME')
     test2 = find_csv_record(storage, sn, key='SNAME')
-    if test1 == test2 and not test1 is None and not test2 is None:
+    if test1 == test2 and test1 is not None and test2 is not None:
         sett = find_csv_record(storage, gn, key='GNAME')
         now = str(datetime.datetime.now())
         update_csv_record(storage, True, int(sett['KEY']), 'LASTCHECKOUT', now)
@@ -106,7 +111,7 @@ def checkout(gn, sn, storage):
 def wages(gn, sn, storage):
     test1 = find_csv_record(storage, gn, key='GNAME')
     test2 = find_csv_record(storage, sn, key='SNAME')
-    if test1 == test2 and not test1 is None and not test2 is None:
+    if test1 == test2 and test1 is not None and test2 is not None:
         sett = find_csv_record(storage, gn, key='GNAME')
         weekday = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN']
         wage = 0

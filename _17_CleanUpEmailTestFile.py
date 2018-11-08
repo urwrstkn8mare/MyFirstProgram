@@ -1,3 +1,9 @@
+# Title: CleanUpEmailTestFile
+# Created by: Samit Shaikh
+# Created: N/A
+# Date of Last Revision: 2018-11-08
+# Purpose: To cleap up a testfile for the email verifier project.
+
 import os
 import file
 

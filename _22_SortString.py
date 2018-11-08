@@ -1,11 +1,14 @@
-"""
-Created 2018-10-09 11:51:24.501005
-SortString
-"""
+# Program written by: Samit Shaikh
+# Date of last revision: 20181106
+# Purpose: To create functions for sorting arrays and files.
+
 import os
 from _21_Text2Maths import parse
 
+# Imports the parse function from Project 21 and the os module from python's built-in library.
+
 name = os.path.realpath(__file__)
+# Gets the name of the file and assigns it to variable name
 logs = input('LOGS (True/False): ').lower() in ['true', '1', 't', 'y', 'yes', 'yeah', 'yup', 'certainly',
                                                 'uh-huh']  # If userinput is in the list then variable logr is True
 print()  # Print new line
@@ -42,6 +45,7 @@ def fullsplit(string):
     for z in range(len(string)):
         new.append(string[z])
     return new
+    # Turns a string into a list with each character as an individual list item.
 
 
 def swap(string):
@@ -52,6 +56,7 @@ def swap(string):
         return ''.join(string[1:3])
     else:
         return error('03_badstrlen', 'String must be 2 characters long.', name)
+    # Swaps a two character string.
 
 
 def sortall(string):
@@ -75,23 +80,34 @@ def quicksort(array):
     if not isinstance(array, list):
         array = fullsplit(array)
         notarray = True
+    # If the array is not a list than the function, fullsplit, will be used to make it into an array and the variable
+    #  notarray will be true (a flag).
     if len(array) <= 1:
         return list(array)
+    # If the array is one list item long, then the function will return the array.
 
     middle = int((len(array) / 2) - 1)
+    # Determines the middle of the array (or the closest to the middle).
     pivot = array[middle]
+    # Assigns the middle list item of the array to the variable, pivot.
     del array[middle]
-    left = []
-    right = []
+    # removes the middle item from the array.
+    left, right = [], []
+    # Creates an empty list assigned to variables: left and right.
     for i in range(len(array)):
         if array[i] < pivot:
             left.append(array[i])
         else:
             right.append(array[i])
+    # For the number of list items in the array it will append it the left or right list variables depending on its
+    # location relative to the pivot.
     result = quicksort(left) + [pivot] + quicksort(right)
+    # creates a list variable, result, with the left, pivot and right in the list together in order.
     if notarray:
         result = ''.join(result)
+    # if variable notarray (the flag) is true than to join the list together and assign it to result.
     return result
+    # return variable result
 
 
 def sort2(string):
@@ -99,20 +115,15 @@ def sort2(string):
     if len(string) == 2:
         if string[1] < string[0]:
             return swap(string)
+        # if the right character is less than the left character than swap them.
     else:
         return error('01_badstrlen', 'String must be 2 characters long.', name)
-
-
-def sort3(string):
-    string = str(string)
-    if len(string) == 3:
-        return sortall(string)
-    else:
-        return error('02_badstrlen', 'String must be 3 characters long.', name)
+        # if the string is not two characters long output an error
 
 
 def filesort(filename, **settings):
     filename = str(filename).strip()
+    # makes sure the filename is a string and possible whitespace is removed.
     default = {
         'parse': False,
         'forcestr': False,
@@ -121,7 +132,9 @@ def filesort(filename, **settings):
         'outputverify': True,
         'outputvalues': False
     }
+    # creates a dictionary of default values for settings
     settingnames = ','.join(default).split(',')
+    # creates a list containing the names of the default settings
     boolexceptions = ['newfilename']
     for x in range(len(settingnames)):
         if not settingnames[x] in settings:
@@ -145,10 +158,18 @@ def filesort(filename, **settings):
                 if str(parse(filecontent[i])).startswith('!ERROR'):
                     flagstring = True
             else:
-                try:
-                    float(filecontent[i])
-                except ValueError:
-                    flagstring = True
+                floatchars = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.']
+                notfloat = True
+                periodcount = 0
+                for z in range(len(filecontent[i])):
+                    if (str(filecontent[i])[z] in floatchars) and notfloat:
+                        if str(filecontent[i]) == '.':
+                            periodcount += 1
+                        print('True')
+                    else:
+                        notfloat = False
+                        print('False')
+                flagstring = not notfloat
     if flagstring:
         typee = lambda value: str(value).strip()
     else:
@@ -194,6 +215,7 @@ def run():
     print(quicksort('test'))
     print(quicksort(['test', 'aww', 'wow', 'wee', 'cool', '123', 'cool']))
     # filesort(str(input(': ')))
+    filesort('asdfasdfa')
 
 
 # Ignore below this line.

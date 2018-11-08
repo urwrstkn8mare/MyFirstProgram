@@ -1,3 +1,9 @@
+# Title: InterpreterForCSV
+# Created by: Samit Shaikh
+# Created: N/A
+# Date of Last Revision: 2018-11-08
+# Purpose: To interpret .csv files
+
 import os
 
 name = os.path.realpath(__file__)
