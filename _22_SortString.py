@@ -31,7 +31,9 @@ def log(text, validator, **opt):
         # If the parameter, validator, is True, then run the rest of the program.
         if not text == '':
             print('LOG>>> ' + str(text) + ' <<< ' + str(name))
-            # If the text parameter is not empty then print the variable contents sandwiched in 'log' and arrows to
+            # If the text parameter is not empty then print the variable contents sandwiched in 'log' and arroT4 Alg Prac Test Q6.py
+            # sorted.txt
+            # unsorted.txtws to
             # differentiate from the normal output.
         if 'wait' in opt:
             # If the optional parameter, wait, then run the following code.
@@ -81,7 +83,7 @@ def sortall(string):
     return ''.join(done)
 
 
-def quicksort(array):
+def quicksort(array, **opt):
     # made thyis myself btw, after learning about different algorithms. My first recursive algorithm! In this case,
     # I think a recursive algorithm is stable. I am not quite sure how to implement it in iterative yet.
     notarray = False
@@ -103,10 +105,22 @@ def quicksort(array):
     left, right = [], []
     # Creates an empty list assigned to variables: left and right.
     for i in range(len(array)):
-        if array[i] < pivot:
-            left.append(array[i])
+        if 'reverse' in opt:
+            if opt['reverse']:
+                if array[i] > pivot:
+                    left.append(array[i])
+                else:
+                    right.append(array[i])
+            else:
+                if array[i] < pivot:
+                    left.append(array[i])
+                else:
+                    right.append(array[i])
         else:
-            right.append(array[i])
+            if array[i] < pivot:
+                left.append(array[i])
+            else:
+                right.append(array[i])
     # For the number of list items in the array it will append it the left or right list variables depending on its
     # location relative to the pivot.
     result = quicksort(left) + [pivot] + quicksort(right)

@@ -34,7 +34,16 @@ def cmd(command):
         'round': lambda params: print(round(float(params[0]), int(params[1]))),
         'parse': lambda param: print(parse(str(param[0]))),
         'sort': sort,
-        'filesort': lambda filename: filesort(filename[0])
+        'sort-reverse': reversesort,
+        'filesort': lambda filename: filesort(filename[0]),
+        'bin2dec': lambda bin_: print(bin2dec(bin_[0])),
+        'bin2asc': lambda bin_: print(bin2asc(bin_[0])),
+        'asc2dec': lambda asc: print(asc2dec(asc[0])),
+        'asc2bin': lambda asc: print(asc2bin(asc[0])),
+        'dec2bin': lambda dec: print(dec2bin(dec[0])),
+        'dec2asc': lambda dec: print(dec2asc(dec[0])),
+        'writefileval': lambda fle: print(writefileval(fle[0], fle[1])),
+        'readfileval': lambda fle: print(readfileval(fle[0]))
     }
     ran = False
     if '-' in command:

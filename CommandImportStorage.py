@@ -7,6 +7,8 @@ import time
 import random
 from _21_Text2Maths import parse
 from _22_SortString import filesort, quicksort
+from _15_BinaryConverterAndStuff import bin2dec, dec2asc, dec2bin, asc2bin, asc2dec, bin2asc, largest, smallest, \
+    readfileval, writefileval
 
 
 # commands
@@ -22,6 +24,13 @@ def sort(array):
         print(quicksort(array[0]))
     else:
         print(', '.join(quicksort(array)))
+
+
+def reversesort(array):
+    if len(array) == 1:
+        print(quicksort(array[0], reverse=True))
+    else:
+        print(', '.join(quicksort(array, reverse=True)))
 
 
 def newproject(params):
