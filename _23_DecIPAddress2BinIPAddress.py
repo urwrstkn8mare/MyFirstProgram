@@ -15,7 +15,7 @@ def networkingdec2bin(address):
 
 def run():
     print('Welcome to Decimal IPv4 Address with Subnet Mask to Binary program created by me, Samit Shaikh!'
-          '    Dotted Decimal Notation'
+          '    Dotted Decimal Notation    '
           '-------------------------------')
     decip = input('IPv4 Address | ')
     print('-------------------------------')
@@ -23,7 +23,7 @@ def run():
     print('-------------------------------'
           '         Converting...\n')
     binip = networkingdec2bin(decip)
-    binsubnet = networkingdec2bin(binsubnet)
+    binsubnet = networkingdec2bin(decsubnet)
     if not binip[0]:
     # If binip is invalid then
     elif not binsubnet[0]:
@@ -32,7 +32,7 @@ def run():
         print('-------------------------------')
         print('IPv4 Address | ' + binip[1])
         print('-------------------------------')
-        print(' Subnet Mask |')
+        print(' Subnet Mask | ' + binsubnet[1])
         print('-------------------------------')
 
 
