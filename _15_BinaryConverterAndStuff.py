@@ -39,35 +39,29 @@ def dec2bin(number):  # defines function as dec2bin
         number = int(number)  # turns variable number into integer
         log(number, logb)  # logs variable number
         if str(number).find('-') > -1:  # checks if their is a '-' in number
-            number = str(number).replace('-', '')  # if returned true than variable number has the '-' removed
-            number = int(number)  # make number variable back into integer
-            negative = True  # set boolean variable negative to true.
+            # there is a dash in the input
+            print('! Must input a positive integer !')
+            binumber = 'error'
         else:
-            negative = False  # if returned false, boolean variable negative is set false
-        log(number, logb)  # log variable number
-        log(negative, logb)  # log variable negative
-        if number == 0:  # checks if variable number is 0
-            binumber = '0'  # if returned true, sets string variable binumber to '0'
-            log(binumber, logb)  # logs variable binumber
-        else:
-            binumber = ''  # if returned false, sets string variable binumber to empty string
-            log(binumber, logb)  # logs variable binumber
-            while number > 0:  # loops if variable number is less than 0
-                binumber = str(
-                    number % 2) + binumber  # sets variable binumber to the remainder of variable number divided by 2
-                #  added to the left of variable binumber as a string
-                number = number // 2  # sets variable number to variable number divided by 2 without remainders or in
-                #  decimal form
+            log(number, logb)  # log variable number
+            if number == 0:  # checks if variable number is 0
+                binumber = '0'  # if returned true, sets string variable binumber to '0'
                 log(binumber, logb)  # logs variable binumber
-                log(number, logb)  # logs variable number
-        if negative:  # checks if variable negative is true
-            binumber = '-' + binumber  # if returned true, variable binumber has '-' added to the left of itself
-        else:
-            pass  # if returned false, do nothing
-        log(binumber, logb)  # logs binumber
-        binumber = int(binumber)
+            else:
+                binumber = ''  # if returned false, sets string variable binumber to empty string
+                log(binumber, logb)  # logs variable binumber
+                while number > 0:  # loops if variable number is less than 0
+                    binumber = str(
+                        number % 2) + binumber  # sets variable binumber to the remainder of variable number divided by 2
+                    #  added to the left of variable binumber as a string
+                    number = number // 2  # sets variable number to variable number divided by 2 without remainders or in
+                    #  decimal form
+                    log(binumber, logb)  # logs variable binumber
+                    log(number, logb)  # logs variable number
+            log(binumber, logb)  # logs binumber
+            binumber = int(binumber)
     except ValueError:
-        print('! Must input number !')
+        print('! Must input an integer !')
         binumber = 'error'
     return binumber  # returns binumber as an integer
 
