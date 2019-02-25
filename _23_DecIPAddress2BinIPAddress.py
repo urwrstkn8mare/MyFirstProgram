@@ -3,7 +3,7 @@
 # Created: 2019-02-18 14:01:23.209621
 # Date of Last Revision: 2019-02-25
 # Purpose: To convert IPv4 Addresses with their subnet masks to binary from decimal.
-# This program relies on _15_BinaryConverterAndStuff.py
+# Note: This program relies on _15_BinaryConverterAndStuff.py
 
 # Imports the dec2bin() funtion from _15_BinaryConverterAndStuff.py which is used
 # to convert decimals to binary numbers.
