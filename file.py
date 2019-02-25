@@ -28,7 +28,6 @@ def read(path, line):
         print(error)
         input()
         exit()
-        raise
     if line == 0:
         content = content
     else:
