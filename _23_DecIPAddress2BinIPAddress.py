@@ -11,7 +11,8 @@ from _15_BinaryConverterAndStuff import dec2bin
 
 
 # This function: ValidateIP4() accepts a string which is supposed to be the IP address and checks if it a valid
-# IPO address. If it is valid then it will convert it to a binary ip address.
+# IPO address and converts it. It outputs to values, True or False to let the user know if it is valid or not,
+# and a converted IP Address that doubles as a way to pinpoint why the IP Address may be invalid.
 def ValidateIP4(address):
     # This is check 1 of the tests the IP Address must pass to be accepted. Check 1 checks if the IP Address
     # has 3 decimal points. However, there must be something between them. To check this it checks for any
