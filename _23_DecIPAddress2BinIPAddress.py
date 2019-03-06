@@ -5,14 +5,16 @@
 # Purpose: To convert IPv4 Addresses with their subnet masks to binary from decimal.
 # Note: This program relies on _15_BinaryConverterAndStuff.py
 
-# Imports the dec2bin() funtion from _15_BinaryConverterAndStuff.py which is used
-# to convert decimals to binary numbers.
+# Imports the dec2bin() function from _15_BinaryConverterAndStuff.py which is used
+# to convert decimals to binary numbers. The function accepts a decimal as an float 
+# and returns it as a binary which is an integer.
 from _15_BinaryConverterAndStuff import dec2bin
 
 
 # This function: ValidateIP4() accepts a string which is supposed to be the IP address and checks if it a valid
 # IPO address and converts it. It outputs to values, True or False to let the user know if it is valid or not,
-# and a converted IP Address that doubles as a way to pinpoint why the IP Address may be invalid.
+# and a converted IP Address that doubles as a way to pinpoint why the IP Address may be invalid. This function
+# depends on the dec2bin() functions from my _15_BinaryConverterAndStuff.py projects.
 def ValidateIP4(address):
     # This is check 1 of the tests the IP Address must pass to be accepted. Check 1 checks if the IP Address
     # has 3 decimal points. However, there must be something between them. To check this it checks for any
@@ -58,6 +60,7 @@ def ValidateIP4(address):
         return [False, 'INVALID!']
 
 
+# Mainline
 def run():
     # An introduction to the program. :)
     print('Welcome to Decimal IPv4 Address with Subnet Mask to Binary\nprogram created by me, Samit Shaikh!')
