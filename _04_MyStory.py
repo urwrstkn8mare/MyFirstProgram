@@ -14,7 +14,7 @@ def end_story():
         print('')
     else:
         print('You did not choose with correct terms, but the project will end anyway. Bye!')
-        print('NOTE: Youre answer may have been suitable but you must write either no or yes. As written in this '
+        print('NOTE: You\'re answer may have been suitable but you must write either no or yes. As written in this '
               'sentence.')
 
 
@@ -34,7 +34,7 @@ def story():
     ageNumber = int(input('How old are you?'))
     setting = input('What year is it?')
     setting = int(setting)
-    game = input('Fortnite or PUBG?')
+    game = input('Fortnite or Player Unknown Battlegrounds?')
     food = input('What food do you like?')
     weapon = input('What is your favourite weapon?')
     print('')
@@ -82,8 +82,7 @@ def story():
                     'North Korea be obliterated by raining nukes. You hate Donald Trump now. After you flee in time '
                     'the only consequences is your new 20th toe!')
                 print(
-                    'Now you are undercover in America. Youre name is not {0} anymore but it is now {1}.'.format(name,
-                                                                                                                 name2))
+                    'Now you are undercover in America. You\'re name is not {0} anymore but it is now {1}.'.format(name, name2))
                 kill = input('Do you want to kill Donald Trump now?')
                 print('')
                 if kill == 'no':
@@ -142,7 +141,7 @@ def story():
                 print(
                     'You should be ashamed! Why would you live in North Korea. I am not even going to continue the '
                     'story. I jump into your universe and shove your ' + food + ' into your face. Then I get your ' +
-                    weapon + ' and shoot all your body parts expect your heart and brain. While you blead to death I '
+                    weapon + ' and shoot all your body parts expect your heart and brain. While you bleed to death I '
                              'let you watch ' + game + '!')
                 print('')
                 end_story()
@@ -161,13 +160,13 @@ def story():
                 end_story()
             elif setting < 2018:
                 print(
-                    'You are too young to understand but youre country is bad. You should abandon it now!. The story '
+                    'You are too young to understand but you\'re country is bad. You should abandon it now!. The story '
                     'shall not continue until you leave!')
                 print('')
                 end_story()
             elif setting == 2018:
                 print(
-                    'You are too young to understand but youre country is bad. You should abandon it now!. The story '
+                    'You are too young to understand but you\'re country is bad. You should abandon it now!. The story '
                     'shall not continue until you leave!')
                 print('')
                 end_story()

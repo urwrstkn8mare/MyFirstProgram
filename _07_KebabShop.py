@@ -8,7 +8,7 @@ def kebab_shop_request():
     number_of_people: int = int(input('How many people will I be serving today?'))
     number_of_people = number_of_people + 1
     print('')
-    print('Ok. Rememeber that Lamb is 15 Dollars and Chicken is 10 Dollars')
+    print('Ok. Remember that Lamb is 15 Dollars and Chicken is 10 Dollars')
     order_number = 1
     while number_of_people > order_number > 0:
         order_request = str(
@@ -25,7 +25,7 @@ def kebab_shop_request():
             kebab_shop_request()
         print('')
         order_number = order_number + 1
-    print('Here is youre order summary: ')
+    print('Here is you\'re order summary: ')
     order_number = 1
     while number_of_people > order_number > 0:
         print('Order ' + str(order_number) + ': ' + order[order_number])
@@ -49,9 +49,9 @@ def kebab_shop_request():
         drinkprice = 0
     print('Before you purchase, I would like to remind you that the vending machine is available to you.')
     ordertotal = ordertotal + drinkprice
-    print('Youre order total is now: $' + str(ordertotal))
+    print('You\'re order total is now: $' + str(ordertotal))
     print('You finished ordering! ')
-    vendingquery = input('Do you want to use the vedning machine? ')
+    vendingquery = input('Do you want to use the vending machine? ')
     if vendingquery == 'yes':
         print('')
         vending_machine('N/A', 2)

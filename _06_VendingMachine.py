@@ -4,7 +4,7 @@ def vending_machine(newitem, newitemconfirmation):
     print('')
     print('Raw Chicken - 1')
     print('Overcooked Chicken - 2')
-    print('McDonalds (the whole company) - 3')
+    print('McDonald\'s (the whole company) - 3')
     print('Coke - 4')
     print('Other Soft Drink - 5')
     print('Underwear (You can find me in some vending machines!) - 6')
@@ -47,7 +47,7 @@ def vending_machine(newitem, newitemconfirmation):
         elif request == 2:
             print('Ummmm... I have never tasted food. But it does not look good!')
         elif request == 3:
-            print('Wow you are rich!. You bought McDonalds and now you have infinite food. (junk food tho, '
+            print('Wow you are rich!. You bought McDonald\'s and now you have infinite food. (junk food tho, '
                   'but who cares!)')
         elif request == 4:
             print('Wow, you are so normal... (but coke still is good)')

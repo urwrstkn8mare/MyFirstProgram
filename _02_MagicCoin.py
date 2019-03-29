@@ -14,7 +14,7 @@ def run():
     print(newnumber + ' coins in your treasure chest!')
     print('')
     print('Part B:')
-    print('Your nasty next door neighbour’s Raven watches you take the gold coins home ')
+    print('Your nasty next door neighbour Raven watches you take the gold coins home ')
     print('every day and place them in your bedroom. The Raven likes your shiny gold')
     inputvar4 = input('coins and no matter what you do, it always manages to steal how many coins from you each week?')
     newnumber = int(newnumber) - int(inputvar3) / 3 * int(inputvar4)
