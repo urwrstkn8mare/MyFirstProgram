@@ -197,8 +197,8 @@ def run():
                 break
         try:  # tries following code
             if cmd == 'dec2bin':  # if variable cmd is 'dec2bin'
-                print(dec2bin(value[
-                                  0]))  # then prints output of function dec2bin which argument is the first of list
+                print('\n' + str(dec2bin(int(value[
+                                  0]))))  # then prints output of function dec2bin which argument is the first of list
                 # variable value as an integer
             elif cmd == 'bin2dec':  # if above is false then if variable cmd is 'bin2dec'
                 print(bin2dec(value[
