@@ -9,7 +9,8 @@ from CommandImportStorage import *
 def prg(prgnumber):
     path = os.path.abspath(os.path.dirname(sys.argv[0])) + '/'
     find = '_' + "{0:0=2d}".format(prgnumber) + '_'
-    modulepath = [i for i in os.listdir(path) if os.path.isfile(os.path.join(path, i)) and find in i]
+    modulepath = [i for i in os.listdir(path) if os.path.isfile(
+        os.path.join(path, i)) and find in i]
     if not modulepath:
         print('Could not find project.\nEnding...')
         return 'NOTFOUND'
@@ -43,7 +44,8 @@ def cmd(command):
         'dec2bin': lambda dec: print(dec2bin(dec[0])),
         'dec2asc': lambda dec: print(dec2asc(dec[0])),
         'writefileval': lambda fle: print(writefileval(fle[0], fle[1])),
-        'readfileval': lambda fle: print(readfileval(fle[0]))
+        'readfileval': lambda fle: print(readfileval(fle[0])),
+        'parse': lambda input: print(parse(input[0]))
     }
     ran = False
     if '-' in command:

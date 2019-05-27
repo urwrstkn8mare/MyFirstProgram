@@ -4,15 +4,16 @@
 # Date of Last Revision: 2018-11-08
 # Purpose: To parse text and output a number.
 
-from _15_BinaryConverterAndStuff import *
+from _15_BinaryConverterAndStuff import log
 from _19_InterpreterForCSV import error
 import os
 import re
 
 name = os.path.realpath(__file__)
 
-mlog = input('MLOG (True/False): ').lower() in ['true', '1', 't', 'y', 'yes', 'yeah', 'yup', 'certainly',
-                                                'uh-huh']  # If userinput is in the list then variable logb is True
+mlog = input('MLOG (True/False): ').lower() in [
+    'true', '1', 't', 'y', 'yes', 'yeah', 'yup', 'certainly', 'uh-huh']
+# If userinput is in the list then variable logb is True
 print()
 
 
@@ -44,7 +45,8 @@ def parse(string):
                             return error(name, '06_tomuchop', 'Too much operations.')
                         else:
                             log(operators[i], mlog, name='operators[i]')
-                            tmp = str(string.strip()).replace(operators[i], '-', 1).replace('=', '')
+                            tmp = str(string.strip()).replace(
+                                operators[i], '-', 1).replace('=', '')
                             if not operators[i] == '-':
                                 tmp = tmp.replace(operators[i], '')
                             tmp = tmp.split('-')
@@ -54,12 +56,15 @@ def parse(string):
                                 tmp[z] = tmp[z].strip()
                             if 5 > len(tmp) > 2 and '-' in string[0:-1]:
                                 if len(tmp) == 4:
-                                    parts = ['-'.join(tmp[0:2]).strip(), '-'.join(tmp[2:4]).strip()]
+                                    parts = [
+                                        '-'.join(tmp[0:2]).strip(), '-'.join(tmp[2:4]).strip()]
                                 elif len(tmp) == 3:
                                     if tmp[0].strip() in intrange:
-                                        parts = [tmp[0].strip(), '-'.join(tmp[1:3]).strip()]
+                                        parts = [
+                                            tmp[0].strip(), '-'.join(tmp[1:3]).strip()]
                                     else:
-                                        parts = ['-'.join(tmp[0:2]).strip(), tmp[2].strip()]
+                                        parts = [
+                                            '-'.join(tmp[0:2]).strip(), tmp[2].strip()]
                             try:
                                 log(parts, mlog, name='parts')
                                 first = float(parts[0].strip())

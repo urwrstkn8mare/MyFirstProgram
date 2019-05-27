@@ -10,14 +10,14 @@
 
 
 def run():
-        runner = __import__('MyFirstPythonFile')
-        while True:
-            try:
-                runner.startup()
-            except KeyboardInterrupt:
-                print('\nForce Shutting Down...')
-            if not input('\nRestart? (y/n) ').lower() == 'y':
-                break
+    runner = __import__('MyFirstPythonFile')
+    while True:
+        try:
+            runner.startup()
+        except KeyboardInterrupt:
+            print('\nForce Shutting Down...')
+        if not input('\nRestart? (y/n) ').lower() == 'y':
+            break
 
 
 run()

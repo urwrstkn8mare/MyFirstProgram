@@ -50,7 +50,8 @@ def dec2bin(number):  # defines function as dec2bin
                     binumber = str(
                         number % 2) + binumber  # appends the remainder of variable number divided by 2 to the end of binumber
                     #  added to the left of variable binumber as a string
-                    number = number // 2  # sets variable number to variable number divided by 2 without remainders or in
+                    # sets variable number to variable number divided by 2 without remainders or in
+                    number = number // 2
                     #  decimal form
             binumber = int(binumber)  # makes binumber an integer data type
     else:
@@ -66,25 +67,29 @@ def bin2dec(number):  # defines function as bin2dec
     log(ddecimal, logb)  # logs variable ddecimal
     i = 0  # sets i to 0
     while i < len(bbinary):  # loops while i is less than the number of characters in variable bbinary
-        log(0 - (i + 1), logb)  # logs the output of variable i add 1 subtracted from 0
+        # logs the output of variable i add 1 subtracted from 0
+        log(0 - (i + 1), logb)
         log(i, logb)  # logs variable i
         mathh = ((2 ** i) * int(bbinary[0 - (i + 1)]))
         log(mathh, logb)  # log variable mathh
-        ddecimal = ddecimal + mathh  # sets variable ddecimal to itself added to varibale mathh
+        # sets variable ddecimal to itself added to varibale mathh
+        ddecimal = ddecimal + mathh
         log(ddecimal, logb)  # log variable ddecimal
         i += 1  # sets variable i to 1 added to itself
     return ddecimal  # returns variable ddecimal
 
 
 def dec2asc(number):  # define function dec2ascii
-    dec = int(number) - 32  # sets variable dec to variable number subtract 32 as an integer
+    # sets variable dec to variable number subtract 32 as an integer
+    dec = int(number) - 32
     ascii_table = ' !"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~'
     # sets variable asciiTable to printable range of ascii characters in a string with placeholders on it's right to
     # align the position of each character to its corresponding decimal value.
     if 31 < dec + 32 < 127:
         pass  # checks if variable dec plus 32 is between 31 and 127
     else:
-        print('!ERROR! Input not within printable range.')  # if returned false, print an error with reason
+        # if returned false, print an error with reason
+        print('!ERROR! Input not within printable range.')
         exit()  # exit program
     return ascii_table[
         dec]  # return the character in variable asciiTable which position is the value held in variable dec.
@@ -100,7 +105,8 @@ def asc2dec(letter):  # define function ascii2dec
     if len(str(letter)) == 1:
         pass
     else:
-        print('!ERROR! Input more than one letter (or less)')  # if returned false, print error
+        # if returned false, print error
+        print('!ERROR! Input more than one letter (or less)')
         exit()  # exit program
     ascii_table = ' !"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~'
     # sets variable asciiTable to printable range of ascii characters in a string with placeholders on it's right to
@@ -134,7 +140,8 @@ def largest(a, b, c):  # defines function largest
         one = c  # variable one is given variable c
     else:  # else
         three = c  # else, variable three is given variable c
-    return [int(one), int(two), int(three)]  # returnes a list containing variables one, two and three
+    # returnes a list containing variables one, two and three
+    return [int(one), int(two), int(three)]
 
 
 def smallest(a, b, c):  # defines function smallest
@@ -170,7 +177,8 @@ def readfileval(textfilename):
 
 
 def restart():
-    restartt: str = input('\nRestart? (y/n) \n')  # sets variable restart to user input
+    # sets variable restart to user input
+    restartt: str = input('\nRestart? (y/n) \n')
     if restartt.lower() == 'y':  # if variable restart, with all characters in lowercase, is 'y'
         return False
     else:
@@ -181,12 +189,16 @@ def run():
     global cmd, value
     while True:  # loops forever unless broken
         try:
-            command = str(input('command: '))  # sets variable command to user input as string.
+            # sets variable command to user input as string.
+            command = str(input('command: '))
             log(command, logb)  # logs variable command
-            command = command.split('-', 1)  # splits variable command between the first '-'
+            # splits variable command between the first '-'
+            command = command.split('-', 1)
             log(command, logb)  # logs variable command
-            value = command[1]  # sets variable value to the second string in list variable command
-            cmd = command[0]  # sets variable cmd to the first string in list variable command
+            # sets variable value to the second string in list variable command
+            value = command[1]
+            # sets variable cmd to the first string in list variable command
+            cmd = command[0]
             log(value, logb)  # logs variable value
             log(cmd, logb)  # logs variable value
             value = value.split(',')  # splits variable value between ','
@@ -198,27 +210,27 @@ def run():
         try:  # tries following code
             if cmd == 'dec2bin':  # if variable cmd is 'dec2bin'
                 print('\n' + str(dec2bin(int(value[
-                                  0]))))  # then prints output of function dec2bin which argument is the first of list
+                    0]))))  # then prints output of function dec2bin which argument is the first of list
                 # variable value as an integer
             elif cmd == 'bin2dec':  # if above is false then if variable cmd is 'bin2dec'
                 print(bin2dec(value[
-                                  0]))  # then prints output of function bin2dec which argument is the first of list
+                    0]))  # then prints output of function bin2dec which argument is the first of list
                 # variable value as an integer
             elif cmd == 'dec2asc':  # if above is false then if variable cmd is 'dec2ascii'
                 print(dec2asc(value[
-                                  0]))  # then prints output of function dec2ascii which argument is the first of
+                    0]))  # then prints output of function dec2ascii which argument is the first of
                 # list variable value as an integer
             elif cmd == 'bin2asc':  # if above is false then if variable cmd is 'bin2ascii'
                 print(bin2asc(value[
-                                  0]))  # then prints output of function bin2ascii which argument is the first of
+                    0]))  # then prints output of function bin2ascii which argument is the first of
                 # list variable value
             elif cmd == 'asc2dec':  # if above is false then if variable cmd is 'ascii2dec'
                 print(asc2dec(value[
-                                  0]))  # then prints output of function ascii2dec which argument is the first of
+                    0]))  # then prints output of function ascii2dec which argument is the first of
                 # list variable value
             elif cmd == 'asc2bin':  # if above is false then if variable cmd is 'ascii2bin'
                 print(asc2bin(value[
-                                  0]))  # then prints output of function ascii2bin which argument is the first of
+                    0]))  # then prints output of function ascii2bin which argument is the first of
                 # list variable value
             elif cmd == 'largest':
                 print(largest(value[0], value[1], value[2]))
@@ -229,13 +241,15 @@ def run():
             elif cmd == 'readfileval':
                 print(readfileval(value[0]))
             elif cmd == 'log':  # if above is false then if variable cmd is 'log'
-                print(log(value[0], logb))  # logs the first of list variable value
+                # logs the first of list variable value
+                print(log(value[0], logb))
             else:
                 print('!ERROR! Command not found.')  # else, print error
                 if restart():
                     break
         except IndexError:  # if their is an IndexError
-            print('!ERROR! Too many or not enough values inputted.')  # then print error
+            # then print error
+            print('!ERROR! Too many or not enough values inputted.')
             if restart():
                 break
         if restart():

@@ -9,6 +9,7 @@ from _21_Text2Maths import parse
 from _22_SortString import filesort, quicksort
 from _15_BinaryConverterAndStuff import bin2dec, dec2asc, dec2bin, asc2bin, asc2dec, bin2asc, largest, smallest, \
     readfileval, writefileval
+from _21_Text2Maths import parse
 
 
 # commands
@@ -42,28 +43,30 @@ def newproject(params):
         purpose = str(params[2])
         template = '# Title: ' + str(title) + '\n# Created by: ' + name + '\n# Created: ' + str(
             datetime.datetime.now()) + \
-                   '\n# Date of Last Revision: ' + str(datetime.datetime.now()) + '\n# Purpose: ' + str(purpose) + \
-                   '\n\n\ndef run():\n    \"\"' \
-                   '\"\n    Mainline code goes in the' \
-                   ' below, any functions, imports or' \
-                   ' global variables can go outside ' \
-                   'as long as\n    this is the code ' \
-                   'that is meant to run.\n    \"\"\"' \
-                   '\n\n# Ignore below this line.\n\n\nif' \
-                   ' __name__ == \'__main__\':\n    r' \
-                   'un()\n'
+            '\n# Date of Last Revision: ' + str(datetime.datetime.now()) + '\n# Purpose: ' + str(purpose) + \
+            '\n\n\ndef run():\n    \"\"' \
+            '\"\n    Mainline code goes in the' \
+            ' below, any functions, imports or' \
+            ' global variables can go outside ' \
+            'as long as\n    this is the code ' \
+            'that is meant to run.\n    \"\"\"' \
+            '\n\n# Ignore below this line.\n\n\nif' \
+            ' __name__ == \'__main__\':\n    r' \
+            'un()\n'
         z = 0
         while True:
             path = os.path.abspath(os.path.dirname(sys.argv[0])) + '/'
             find = '_' + "{0:0=2d}".format(z) + '_'
-            modulepath = [l for l in os.listdir(path) if os.path.isfile(os.path.join(path, l)) and find in l]
+            modulepath = [l for l in os.listdir(path) if os.path.isfile(
+                os.path.join(path, l)) and find in l]
             if not modulepath:
                 break
             else:
                 z += 1
         with open('_' + "{0:0=2d}".format(z) + '_' + title + '.py', 'w+') as f:
             f.write(template)
-        print('File [' + str('_' + "{0:0=2d}".format(z) + '_' + title + '.py') + '] Created')
+        print(
+            'File [' + str('_' + "{0:0=2d}".format(z) + '_' + title + '.py') + '] Created')
         f.close()
 
 
@@ -71,7 +74,8 @@ def delprg(prgnumber):
     prgnumber = int(prgnumber[0])
     path = os.path.abspath(os.path.dirname(sys.argv[0])) + '/'
     find = '_' + "{0:0=2d}".format(prgnumber) + '_'
-    modulepath = [l for l in os.listdir(path) if os.path.isfile(os.path.join(path, l)) and find in l]
+    modulepath = [l for l in os.listdir(path) if os.path.isfile(
+        os.path.join(path, l)) and find in l]
     if not modulepath:
         print('Could not find project.\nEnding...')
         return 'NOTFOUND'
@@ -85,7 +89,8 @@ def prgs():
     while True:
         path = os.path.abspath(os.path.dirname(sys.argv[0])) + '/'
         find = '_' + "{0:0=2d}".format(z) + '_'
-        modulepath = [l for l in os.listdir(path) if os.path.isfile(os.path.join(path, l)) and find in l]
+        modulepath = [l for l in os.listdir(path) if os.path.isfile(
+            os.path.join(path, l)) and find in l]
         if not modulepath:
             break
         else:
