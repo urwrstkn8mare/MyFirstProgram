@@ -46,7 +46,8 @@ def strbool(inputvar):
 
 def log(functionreturn):
     # Log information returned by function run (the function is the rule in this case).
-    print('     LOG>>> ' + functionreturn[0] + '() returned ' + strbool(functionreturn[1]) + '.')
+    print('     LOG>>> ' +
+          functionreturn[0] + '() returned ' + strbool(functionreturn[1]) + '.')
     return functionreturn[1]
 
 
@@ -202,7 +203,8 @@ def alphabet(email):
     returnvar = True
     localpart = atcheck(email)[2]
     domain = email.split('@')[-1]
-    alphabetthird = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!#$%&' + '\'*+-/=?^_`{|}~.'
+    alphabetthird = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!#$%&' + \
+        '\'*+-/=?^_`{|}~.'
     i = 0
     while i < len(alphabetthird):
         localpart = localpart.replace(alphabetthird[i], '')
@@ -326,15 +328,18 @@ def checkemailbulk():
                  7: checktopleveldomain,
                  }
         while test < len(tests):
-            fileinforesults[emailcount] = fileinforesults[emailcount] and log(tests[test](email.lower()))
+            fileinforesults[emailcount] = fileinforesults[emailcount] and log(
+                tests[test](email.lower()))
             test += 1
             if not fileinforesults[emailcount]:
                 break
             else:
                 pass
         """End"""
-        print(strbool(fileinforesults[emailcount]) + ': <' + fileinfo[emailcount] + '>')
-        file.write(f, str(fileinfo[emailcount]) + " [" + strbool(fileinforesults[emailcount]) + "]")
+        print(strbool(fileinforesults[emailcount]
+                      ) + ': <' + fileinfo[emailcount] + '>')
+        file.write(f, str(fileinfo[emailcount]) +
+                   " [" + strbool(fileinforesults[emailcount]) + "]")
         emailcount += 1
         print('')
     file.closeafterwrite(f)
@@ -352,8 +357,10 @@ def checkemailbulk():
     total = x + y
     percentx = (x / total) * 100
     percenty = (y / total) * 100
-    print('Number of valid: ' + str(x) + '/' + str(total) + ' OR ' + str(percentx) + '%')
-    print('Number of invalid: ' + str(y) + '/' + str(total) + ' OR ' + str(percenty) + '%')
+    print('Number of valid: ' + str(x) + '/' +
+          str(total) + ' OR ' + str(percentx) + '%')
+    print('Number of invalid: ' + str(y) + '/' +
+          str(total) + ' OR ' + str(percenty) + '%')
     os.remove('tlds-alpha-by-domain.txt')
     print('')
     return
@@ -388,14 +395,16 @@ def checkmailindividual():
                  8: checktopleveldomain,
                  }
         while test < len(tests):
-            fileinforesults[emailcount] = fileinforesults[emailcount] and log(tests[test](email.lower()))
+            fileinforesults[emailcount] = fileinforesults[emailcount] and log(
+                tests[test](email.lower()))
             test += 1
             if not fileinforesults[emailcount]:
                 break
             else:
                 pass
         """End"""
-        print(strbool(fileinforesults[emailcount]) + ': <' + fileinfo[emailcount] + '>')
+        print(strbool(fileinforesults[emailcount]
+                      ) + ': <' + fileinfo[emailcount] + '>')
         emailcount += 1
         print('')
     os.remove('tlds-alpha-by-domain.txt')
@@ -437,5 +446,3 @@ def run():
 
 if __name__ == '__main__':
     run()
-
-os.remove('file.py')

@@ -136,5 +136,3 @@ def run():
 
 if __name__ == '__main__':
     run()
-
-os.remove('file.py')
