@@ -41,8 +41,10 @@ def parse(string):
                 }
                 for i in range(len(operators)):
                     if operators[i] in string:
-                        if string.count(operators[i]) > 1 and not operators[i] == '-':
-                            return error(name, '06_tomuchop', 'Too much operations.')
+                        if string.count(
+                                operators[i]) > 1 and not operators[i] == '-':
+                            return error(name, '06_tomuchop',
+                                         'Too much operations.')
                         else:
                             log(operators[i], mlog, name='operators[i]')
                             tmp = str(string.strip()).replace(
@@ -57,33 +59,46 @@ def parse(string):
                             if 5 > len(tmp) > 2 and '-' in string[0:-1]:
                                 if len(tmp) == 4:
                                     parts = [
-                                        '-'.join(tmp[0:2]).strip(), '-'.join(tmp[2:4]).strip()]
+                                        '-'.join(tmp[0: 2]).strip(),
+                                        '-'.join(tmp[2: 4]).strip()]
                                 elif len(tmp) == 3:
                                     if tmp[0].strip() in intrange:
                                         parts = [
-                                            tmp[0].strip(), '-'.join(tmp[1:3]).strip()]
+                                            tmp[0].strip(),
+                                            '-'.join(tmp[1: 3]).strip()]
                                     else:
                                         parts = [
-                                            '-'.join(tmp[0:2]).strip(), tmp[2].strip()]
+                                            '-'.join(tmp[0: 2]).strip(),
+                                            tmp[2].strip()]
                             try:
                                 log(parts, mlog, name='parts')
                                 first = float(parts[0].strip())
                                 second = float(parts[1].strip())
                             except ValueError:
-                                return error(name, '02valueerror',
-                                             'The values outside the ' + operators[i] + ' and = must be integers.')
+                                return error(
+                                    name, '02valueerror',
+                                    'The values outside the ' + operators[i] +
+                                    ' and = must be integers.')
                             log(operators[i], mlog, name='operators[i] #2')
                             try:
-                                return float(optdict[operators[i]](first, second))
+                                return float(
+                                    optdict[operators[i]]
+                                    (first, second))
                             except ZeroDivisionError:
-                                return error(name, '01_zerodevisionerror', 'Cannout divide by zero.')
-                return error(name, '03_nooperators', 'No of the eligble operaters were found in the string.')
+                                return error(
+                                    name, '01_zerodevisionerror',
+                                    'Cannout divide by zero.')
+                return error(
+                    name, '03_nooperators',
+                    'No of the eligble operaters were found in the string.')
             else:
-                return error(name, '04_invalidstr',
-                             'The string does not start with an integer or have the second last character as an '
-                             'integer.')
+                return error(
+                    name, '04_invalidstr',
+                    'The string does not start with an integer or have the second last character as an '
+                    'integer.')
         else:
-            return error(name, '05_noequalsign', 'There is no ending equal sign!')
+            return error(name, '05_noequalsign',
+                         'There is no ending equal sign!')
 
 
 def parse2(string):
@@ -99,7 +114,9 @@ def parse2(string):
         tmpp = stringg[l].strip()
         for c in range(len(tmpp)):
             if not tmpp[c] in intrange:
-                return error(name, '07_notint', 'Only floats allowed (no negatives yet).')
+                return error(
+                    name, '07_notint',
+                    'Only floats allowed (no negatives yet).')
         stringtmp = stringtmp.replace(stringg[l], '')
     y = 1
     old = stringg[0]
